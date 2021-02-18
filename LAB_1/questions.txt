@@ -1,0 +1,19 @@
+3. Execute the program with different parameters e.g. numerical or not, negative, etc.or even without parameters. 
+What happens? Do you see any problem or improvement to implement in this source code?
+
+In the case that we execute it without parameters, a warning pops up letting us know that at least two numbers
+are expected.
+In the case that we execute it introducing characters, it produces an exception. Even if we put some numbers behind,
+when the program reaches the character program raises an exception.
+In the case that we execute it with negative parameters, the program runs completely fine and the expected output
+is always matched.
+As a solution we could add a warning whenever the arguments expected aren't numerical so it warns the user and it
+avoids running the program with an exception in thread, and also we could ignore all the elements that cannot be parsed.
+
+4. 
+
+We use the + operator to concatenate strings. However, what happens if we remove the parentheses from the 
+lineSystem.out.println("Total sum: "+(c.getEvenSum ()+c.getOddSum ()));? Can you explain what happens?
+    The compiler doesn't let you compile the code because it detects that we have a mistake in that line.
+    If we remove the parentheses in getOddSum(), the compiler will give us an error because getOddSum is not an attribute.
+    
