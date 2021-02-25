@@ -26,4 +26,8 @@ exe2:
 	@echo "\n"
 
 doc:
+	@echo "#-----------------------"
+	@echo "Generating doc . . ."
+	@echo ""
 	javadoc -d doc -author prac2/traffic/*.java
+	@echo "\n"
