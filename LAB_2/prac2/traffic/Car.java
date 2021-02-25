@@ -8,6 +8,11 @@ public class Car extends Vehicle {
 		this.diesel = diesel;
 	}
 
+	public Car(String mod, int a, String licensePlate, boolean diesel) {
+		super(mod, a, licensePlate);
+		this.diesel = diesel;
+	}
+
 	@Override public int numWheels() { return 4; }
 
 	@Override public String toString() {
