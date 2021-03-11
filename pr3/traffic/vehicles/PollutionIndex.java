@@ -1,4 +1,4 @@
-package prac2.traffic;
+package pr3.traffic.vehicles;
 
 public enum PollutionIndex {
 	A, B, C;

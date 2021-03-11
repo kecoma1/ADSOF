@@ -1,4 +1,4 @@
-package prac2.traffic;
+package pr3.traffic;
 public class Example2 {
     public static void main(String[] args) {
         Car fiat500x = new Car("Fiat 500x", 2019, "1245 HYN", true);
