@@ -5,4 +5,7 @@ LAB_2/*.class
 LAB_2/doc/*
 LAB_2/doc/
 LAB_3/*.class
+LAB_3/traffic/*.class
+LAB_3/traffic/drivers/*.class
+LAB_3/traffic/vehicles/*.class
 LAB_3/doc/

@@ -1,4 +1,5 @@
 package pr3.traffic.vehicles;
+import pr3.traffic.drivers.Owner;
 
 /**
  * Class that defines a motorcycle
@@ -27,6 +28,19 @@ public class Motorcycle extends Vehicle{
      */
 	public Motorcycle(String model, int year, String licensePlate, boolean electric) {
 		super(model, year, licensePlate);
+		this.electric = electric;
+	}
+
+    /**
+     * Constructor of the motorcycle class that includes an owner
+     * @param model Model of the Motorcycle
+     * @param year Year of the Motorcycle
+     * @param licensePlate License plate of the motorcycle
+     * @param electric Variable to know if it is electric
+     * @param o Owner of the motorcycle
+     */
+    public Motorcycle(String model, int year, String licensePlate, boolean electric, Owner o) {
+		super(model, year, licensePlate, o);
 		this.electric = electric;
 	}
 

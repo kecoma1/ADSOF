@@ -1,4 +1,5 @@
 package pr3.traffic.vehicles;
+import pr3.traffic.drivers.Owner;
 
 /**
  * Class that defines the Truck
@@ -17,6 +18,20 @@ public class Truck extends Vehicle{
      */
     public Truck(String model, int year, String licensePlate, int axles){
         super(model, year, licensePlate);
+        this.numAxles = axles;
+    }
+
+    /**
+     * Function constructor of the Truck Class
+     * 
+     * @param model The model of the truck
+     * @param year The year of the purchase
+     * @param licensePlate The license plate of the truck
+     * @param axles The number of axles of the truck
+     * @param o Owner of the truck
+     */
+    public Truck(String model, int year, String licensePlate, int axles, Owner o) {
+        super(model, year, licensePlate, o);
         this.numAxles = axles;
     }
 
