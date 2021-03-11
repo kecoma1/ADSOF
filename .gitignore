@@ -1,4 +1,8 @@
 *.class
 LAB_1/*.class
 LAB_1/doc/*
-LAB_1/doc/*
+LAB_2/*.class
+LAB_2/doc/*
+LAB_2/doc/
+LAB_3/*.class
+LAB_3/doc/
