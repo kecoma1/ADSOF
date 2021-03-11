@@ -1,4 +1,4 @@
-all: compile test1 clean doc
+all: compile test1 clean #doc
 
 compile:
 	@echo "#-----------------------"

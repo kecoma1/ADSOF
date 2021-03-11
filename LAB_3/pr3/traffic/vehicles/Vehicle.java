@@ -40,20 +40,21 @@ public abstract class Vehicle {
 	 * @param mod Model of the vehicle
 	 * @param year Year of the vehicle
 	 * @param licensePlate License plate of the vehicle
-	 * @param Owner Owner of the vehicle
+	 * @param o Owner of the vehicle
 	 */
-	public Vehicle(String mod, int a, String licensePlate, Owner o) {		
+	public Vehicle(String mod, int year, String licensePlate, Owner o) {		
 		this.model = mod;
-		this.purchaseYear = a;
+		this.purchaseYear = year;
 		this.licensePlate = licensePlate;
-		this.owner = o.getRealOwner();
+		this.owner = o;
+		this.driver = o.getRealOwner();
 	}
 	
 	@Override public String toString() {
-		if (licensePlate == null) return "model "+this.model+", purchase year "+this.purchaseYear+", with "+
-										  this.numWheels()+" wheels, index:"+this.getPollutionIndex();
-		else return "model "+this.model+", number plate: "+this.licensePlate+", purchase year "+this.purchaseYear+", with "+
-					 this.numWheels()+" wheels, index:"+this.getPollutionIndex();
+		return "model "+this.model+(this.licensePlate != null ? ", number plate: "+this.licensePlate : "")
+		+", purchase year "+this.purchaseYear+", with "
+		+this.numWheels()+" wheels, index:"+this.getPollutionIndex()
+		+(this.owner != null ? " owner: "+this.owner.getName()+" driver: "+this.driver : "");
 	}
 	
 	/**
@@ -77,12 +78,13 @@ public abstract class Vehicle {
 	public void setOwner(Owner o) {
 		this.owner = o.getRealOwner();
 		o.addVehicle(this);
+		if (this.driver == null) this.driver = o.getRealOwner();
 	}
 
 	/**
 	 * Method to set the driver of the Vehicle
 	 * @param p Driver of the vehicle
-	 * @return True if the driver age is < 18, False if not
+	 * @return True if the driver age is greater than 18, False if not
 	 */
 	public boolean setDriver(Person p) {
 		if (p.getAge() < 18) return false;

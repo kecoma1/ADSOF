@@ -21,12 +21,23 @@ public abstract class Owner {
         this.name = name;
     }
 
+    /**
+     * Method to get the name of an Owner
+     * @return Name of the owner
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Method to get the vehicles of the owner
+     * @return Vehicles of the owner
+     */
     public ArrayList<Vehicle> getVehicles() {
         return vehicles;
     }
 
-    @Override
-    public String toString(){
+    @Override public String toString(){
         return this.name;
     }
 

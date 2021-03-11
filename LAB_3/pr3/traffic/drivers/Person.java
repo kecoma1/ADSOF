@@ -1,6 +1,5 @@
 package pr3.traffic.drivers;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
 import pr3.traffic.vehicles.Vehicle;
 
 /**
@@ -10,6 +9,7 @@ import pr3.traffic.vehicles.Vehicle;
 public class Person extends Owner {
 
     private int age;
+    private ArrayList<Company> companies = new ArrayList<Company>();
 
     /**
      * Constructor of the Person class
@@ -31,6 +31,14 @@ public class Person extends Owner {
      */
     public int getAge() {
         return this.age;
+    }
+
+    /**
+     * Method to add a company to the person
+     * @param c Company to be added
+     */
+    public void addCompany(Company c) {
+        this.companies.add(c);
     }
     
 }
