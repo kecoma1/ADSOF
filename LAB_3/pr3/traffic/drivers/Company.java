@@ -22,8 +22,7 @@ public class Company extends Owner{
     }
 
     public String toString(){
-        return "Company:\n" + super.toString() + " (responsible: " +
-            this.responsible + ") owner of:\n" + this.getVehicles();
+        return super.toString();
     }
 
     @Override public Person getRealOwner() {

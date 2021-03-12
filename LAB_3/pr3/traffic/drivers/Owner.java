@@ -37,8 +37,19 @@ public abstract class Owner {
         return vehicles;
     }
 
+    /**
+     * Method to get the vehicle deatils of the person
+     * @return Vehicle details
+     */
+    public String getVehiclesDetails() {
+        String details = new String();
+        for (Vehicle v: this.getVehicles()) 
+            details += "\n"+v.toString();
+        return details;
+    }
+
     @Override public String toString(){
-        return this.name;
+        return this.name+(this.vehicles.size() != 0 ? " owner of:"+this.getVehiclesDetails() : "");
     }
 
     /**

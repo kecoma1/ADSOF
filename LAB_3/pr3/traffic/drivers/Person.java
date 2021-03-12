@@ -40,5 +40,9 @@ public class Person extends Owner {
     public void addCompany(Company c) {
         this.companies.add(c);
     }
+
+    @Override public String toString() {
+        return super.toString();
+    }
     
 }

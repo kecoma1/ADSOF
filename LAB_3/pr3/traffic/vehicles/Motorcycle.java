@@ -52,7 +52,6 @@ public class Motorcycle extends Vehicle{
 	}
 
     @Override public String toString() { 
-        if (this.electric) return "Motorcycle"+(this.electric ? "electric" : "")+super.toString();
-        else return "Motorcycle,"+super.toString();
+        return "Motorcycle"+(this.electric ? "electric" : "")+super.toString();
     }
 }

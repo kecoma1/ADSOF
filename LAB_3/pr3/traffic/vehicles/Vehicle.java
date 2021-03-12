@@ -48,13 +48,14 @@ public abstract class Vehicle {
 		this.licensePlate = licensePlate;
 		this.owner = o;
 		this.driver = o.getRealOwner();
+		o.addVehicle(this);
 	}
 	
 	@Override public String toString() {
-		return "model "+this.model+(this.licensePlate != null ? ", number plate: "+this.licensePlate : "")
+		return ", model "+this.model+(this.licensePlate != null ? ", number plate: "+this.licensePlate : "")
 		+", purchase year "+this.purchaseYear+", with "
 		+this.numWheels()+" wheels, index:"+this.getPollutionIndex()
-		+(this.owner != null ? " owner: "+this.owner.getName()+" driver: "+this.driver : "");
+		+(this.owner != null ? " owner: "+this.owner.getName()+" driver: "+this.driver.getName() : "");
 	}
 	
 	/**
