@@ -2,6 +2,10 @@ package pr3.traffic.fines;
 import java.util.*;
 import java.io.*;
 
+/**
+ * Class that defines the FineReader
+ * @author Kevin de la Coba and Marcos Bernuy
+ */
 public class FineReader{
 
     public static List<Fine> read(String filename) throws IOException{

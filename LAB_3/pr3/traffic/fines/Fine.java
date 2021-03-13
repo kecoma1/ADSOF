@@ -1,5 +1,9 @@
 package pr3.traffic.fines;
 
+/**
+ * Class that defines a Fine
+ * @author Kevin de la Coba and Marcos Bernuy
+ */
 public class Fine{
     private String licensePlate;
     private String type;
@@ -7,7 +11,9 @@ public class Fine{
 
     /**
      * Constructor of the Fine class
-     * @author Kevin de la Coba and Marcos Bernuy
+     * @param String number plate of the car
+     * @param String type of the car
+     * @param String ponts of the fine
      */
     public Fine(String licensePlate, String type, String points){
         this.licensePlate = licensePlate;
