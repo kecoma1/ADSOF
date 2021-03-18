@@ -1,42 +1,56 @@
-all: compile test1 test2 clean #doc
+all: compile exe1 exe2 test1 test2 clean #doc
 
 compile:
 	@echo "#-----------------------"
 	@echo "Compiling . . ."
+	@echo "#-----------------------"
 	@echo ""
-	javac pr3/traffic/vehicles/*.java pr3/traffic/drivers/*.java pr3/traffic/fines/*.java
+	javac pr3/traffic/vehicles/*.java pr3/traffic/drivers/*.java pr3/traffic/fines/*.java pr3/traffic/tests/*.java 
 	@echo "\n"
 
 clean:
 	rm -f pr3/traffic/drivers/*.class
 	rm -f pr3/traffic/vehicles/*.class
 	rm -f pr3/traffic/fines/*.class
+	rm -f pr3/traffic/tests/*.class
 	rm -r -f doc
 
 test1:
 	@echo "#-----------------------"
 	@echo "Executing Test 1 . . ."
-	@echo ""
-	java pr3.traffic.vehicles.TesterPr31
-	@echo "\n"
-
-exe2:
 	@echo "#-----------------------"
-	@echo "Executing Example2 . . ."
 	@echo ""
-	java pr3/traffic/Example2
+	@java pr3.traffic.vehicles.TesterPr31
 	@echo "\n"
 
 test2:
 	@echo "#-----------------------"
 	@echo "Executing Test 2 . . ."
+	@echo "#-----------------------"
 	@echo ""
-	java pr3.traffic.fines.FineTester
+	@java pr3.traffic.fines.FineTester
+	@echo "\n"
+
+exe1:
+	@echo "#-----------------------"
+	@echo "Executing Example1 of previous assignment . . ."
+	@echo "#-----------------------"
+	@echo ""
+	@java pr3.traffic.tests.Example1
+	@echo "\n"
+
+exe2:
+	@echo "#-----------------------"
+	@echo "Executing Example2 of previous assignment . . ."
+	@echo "#-----------------------"
+	@echo ""
+	@java pr3.traffic.tests.Example2
 	@echo "\n"
 
 doc:
 	@echo "#-----------------------"
 	@echo "Generating doc . . ."
+	@echo "#-----------------------"
 	@echo ""
 	javadoc -d doc -author pr3/traffic/drivers/*.java
 	javadoc -d doc -author pr3/traffic/vehicles/*.java

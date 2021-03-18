@@ -1,4 +1,5 @@
-package pr3.traffic;
+package pr3.traffic.tests;
+import pr3.traffic.vehicles.*;
 
 public class Example1 {
 

@@ -1,7 +1,4 @@
 package pr3.traffic.drivers;
-import java.util.Set;
-import java.util.TreeSet;
-import pr3.traffic.vehicles.Vehicle;
 
 /**
  * Class that defines an Owner
@@ -21,12 +18,8 @@ public class Company extends Owner{
         
     }
 
-    public String toString(){
-        return super.toString();
-    }
+    @Override public String toString(){ return super.toString(); }
 
-    @Override public Person getRealOwner() {
-        return this.responsible;
-    }
+    @Override public Person getRealOwner() { return this.responsible; }
 }
 

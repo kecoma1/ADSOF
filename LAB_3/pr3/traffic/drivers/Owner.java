@@ -17,34 +17,32 @@ public abstract class Owner {
      * Constructor of the Owner class
      * @param name Name of the owner
      */
-    public Owner(String name) {
-        this.name = name;
-    }
+    public Owner(String name) { this.name = name; }
 
     /**
      * Method to get the name of an Owner
      * @return Name of the owner
      */
-    public String getName() {
-        return this.name;
-    }
+    public String getName() { return this.name; }
 
     /**
      * Method to get the vehicles of the owner
      * @return Vehicles of the owner
      */
-    public ArrayList<Vehicle> getVehicles() {
-        return vehicles;
-    }
+    public ArrayList<Vehicle> getVehicles() { return vehicles; }
 
     /**
      * Method to get the vehicle deatils of the person
      * @return Vehicle details
      */
     public String getVehiclesDetails() {
+        // string to save the details
         String details = new String();
-        for (Vehicle v: this.getVehicles()) 
+
+        // Getting the details of each vehicle
+        for (Vehicle v: this.getVehicles())
             details += "\n"+v.toString();
+    
         return details;
     }
 
@@ -63,7 +61,5 @@ public abstract class Owner {
      * Method to add a vehicle to the person
      * @param v Vehicle to be added
      */
-    public void addVehicle(Vehicle v) {
-        this.vehicles.add(v);
-    }
+    public void addVehicle(Vehicle v) { this.vehicles.add(v); }
 }

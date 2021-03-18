@@ -48,6 +48,8 @@ public abstract class Vehicle {
 		this.licensePlate = licensePlate;
 		this.owner = o;
 		this.driver = o.getRealOwner();
+
+		// Adding the vehicle to the owner vehicles
 		o.addVehicle(this);
 	}
 	
@@ -77,8 +79,12 @@ public abstract class Vehicle {
 	 * @param o Owner
 	 */
 	public void setOwner(Owner o) {
+		// Getting the person that owns 
 		this.owner = o.getRealOwner();
-		o.addVehicle(this);
+
+		if (o.getVehicles().contains(this) == false) o.addVehicle(this);
+
+		// In case a driver is not set we set it as the owner
 		if (this.driver == null) this.driver = o.getRealOwner();
 	}
 

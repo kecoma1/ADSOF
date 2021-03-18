@@ -1,4 +1,7 @@
-// add imports and package
+package pr3.traffic.license;
+import pr3.traffic.drivers.*;
+import pr3.traffic.license.*;
+
 public class TesterLicense {
 	private void testYoungerThan18CannotHavePermitA() {
 		Person ann = new Person("Ann Smith", 17);

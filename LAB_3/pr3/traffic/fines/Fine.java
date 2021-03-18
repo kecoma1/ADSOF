@@ -25,25 +25,19 @@ public class Fine{
      * Method getter of the licensePlate
      * @return String with the licensePlate
      */
-    public String getLicensePlate(){
-        return this.licensePlate;
-    }
+    public String getLicensePlate(){ return this.licensePlate; }
 
     /**
      * Method getter of the type of Fine
      * @return String with the licensePlate
      */
-    public String getType(){
-        return this.type;
-    }
+    public String getType(){ return this.type; }
 
     /**
      * Method getter of the points of the Fine
      * @return String with the points
      */
-    public String getPoints(){
-        return this.points;
-    }
+    public String getPoints(){ return this.points; }
 
     @Override public String toString(){
         return "Fine [plate="+this.licensePlate+", Fine type="

@@ -1,4 +1,5 @@
-package pr3.traffic;
+package pr3.traffic.tests;
+import pr3.traffic.vehicles.*;
 public class Example2 {
     public static void main(String[] args) {
         Car fiat500x = new Car("Fiat 500x", 2019, "1245 HYN", true);

@@ -57,6 +57,15 @@ public class Car extends Vehicle {
 		return super.getPollutionIndex();
 	}
 	
+	/**
+	 * Getter for the diesel
+	 * @return Boolean value that says if the car is diesel
+	 */
 	public boolean getDiesel() { return this.diesel; }
+
+	/**
+	 * Setter for the diesel attribute
+	 * @param b Value to set
+	 */
 	public void setDiesel(boolean b) { this.diesel = b; }
 }
