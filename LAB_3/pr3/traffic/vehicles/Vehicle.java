@@ -1,6 +1,10 @@
 package pr3.traffic.vehicles;
+import java.util.List;
+
 import pr3.traffic.drivers.Owner;
 import pr3.traffic.drivers.Person;
+import pr3.traffic.license.License;
+import pr3.traffic.license.PermitKind;
 
 /**
  * Class that defines a vehicle
@@ -94,8 +98,28 @@ public abstract class Vehicle {
 	 * @return True if the driver age is greater than 18, False if not
 	 */
 	public boolean setDriver(Person p) {
+		if (!this.checkDriversLicense(p)) return false;
 		if (p.getAge() < 18) return false;
 		this.driver = p;
 		return true;
+	}
+
+	/**
+	 * Method to check if a person can drive a car
+	 * @param p Person to check 
+	 * @return True if the driver can drive the car, False if not
+	 */
+	private boolean checkDriversLicense(Person p) {
+		License license = p.getLicense();
+		if (license == null) return false;
+
+		List<PermitKind> permits = license.getPermitKinds();
+		if (permits == null) return false;
+
+		for (PermitKind permit : permits) {
+			if (permit.getVehicleType() == this.getClass())
+				return true;
+		}
+		return false;
 	}
 }

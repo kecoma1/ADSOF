@@ -1,17 +1,18 @@
-all: compile exe1 exe2 test1 test2 clean #doc
+all: compile exe1 exe2 test1 test2 test3 clean #doc
 
 compile:
 	@echo "#-----------------------"
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac pr3/traffic/vehicles/*.java pr3/traffic/drivers/*.java pr3/traffic/fines/*.java pr3/traffic/tests/*.java 
+	javac pr3/traffic/vehicles/*.java pr3/traffic/drivers/*.java pr3/traffic/fines/*.java pr3/traffic/tests/*.java pr3/traffic/license/*.java 
 	@echo "\n"
 
 clean:
 	rm -f pr3/traffic/drivers/*.class
 	rm -f pr3/traffic/vehicles/*.class
 	rm -f pr3/traffic/fines/*.class
+	rm -f pr3/traffic/license/*.class
 	rm -f pr3/traffic/tests/*.class
 	rm -r -f doc
 
@@ -29,6 +30,14 @@ test2:
 	@echo "#-----------------------"
 	@echo ""
 	@java pr3.traffic.fines.FineTester
+	@echo "\n"
+
+test3:
+	@echo "#-----------------------"
+	@echo "Executing Test 3 . . ."
+	@echo "#-----------------------"
+	@echo ""
+	@java pr3.traffic.license.TesterLicense
 	@echo "\n"
 
 exe1:

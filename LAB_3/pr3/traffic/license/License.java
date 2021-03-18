@@ -24,7 +24,7 @@ public class License {
 
         // Adding the allowed cars to the license
         for (PermitKind permit: p) {
-            this.allowed_types.add(p);
+            this.allowed_types.add(permit);
         }
     }
     
@@ -32,7 +32,7 @@ public class License {
      * Method to add a PermitKind to the license
      * @param p PermitKind to be added into the license
      */
-    public void addPermitKind(PermitKind p) {
+    public void addPermit(PermitKind p) {
         if (!this.allowed_types.contains(p))
             this.allowed_types.add(p);
     }
@@ -42,7 +42,22 @@ public class License {
         this.allowed_types+", points="+this.points+"]";
     }
 
+    /**
+     * Method getter of the minimun age of the permits
+     * @return int the minimun age of all permits
+     */
     public int getPermitAge(){
-        return this.allowed_types.getMinimunAge();
+        int maximun = 18;
+        for(PermitKind p: this.allowed_types){
+            if (p.getMinimumAge() > maximun)
+                maximun=p.getMinimumAge();
+        }
+        return maximun;
     }
+
+    /**
+     * Method to get the permits of the list 
+     * @return List of the permits
+     */
+    public List<PermitKind> getPermitKinds() { return this.allowed_types; }
 }

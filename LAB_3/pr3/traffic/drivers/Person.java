@@ -43,7 +43,7 @@ public class Person extends Owner {
      * @param License l License that will be set
      */
     public boolean setLicense(License l){
-        if( this.getAge() < l.getPermitAge())
+        if(this.getAge() < l.getPermitAge())
             return false;
         this.license = l;
         return true;
