@@ -12,6 +12,7 @@ public class License {
     private static int total_ids;
     private int id;
     private List<PermitKind> allowed_types = new ArrayList<>();
+    private boolean suspended;
 
     /**
      * Constructor for the License class
@@ -21,6 +22,7 @@ public class License {
         License.total_ids++;
         this.points = 12;
         this.id = License.total_ids;
+        this.suspended = false;
 
         // Adding the allowed cars to the license
         for (PermitKind permit: p) {
@@ -36,6 +38,25 @@ public class License {
         if (!this.allowed_types.contains(p))
             this.allowed_types.add(p);
     }
+
+    /**
+     * Getter of the points
+     * @return Points of the license
+     */
+    public int getPoints() { return this.points; }
+
+    /**
+     * Getter of the suspended attribute
+     * @return Boolean value
+     */
+    public boolean getSuspended() { return this.suspended; }
+
+    /**
+     * Setter of the suspended attribute
+     * @param value Value to be setted
+     */
+    public void setSuspended(boolean value) { this.suspended = value; }
+
     
     @Override public String toString() {
         return "License [id ="+this.id+", PermitKinds="+
@@ -60,4 +81,16 @@ public class License {
      * @return List of the permits
      */
     public List<PermitKind> getPermitKinds() { return this.allowed_types; }
+
+    /**
+     * Method to remove points from a License, if the
+     * points are 0 then the license is suspended
+     * @param n Number of points to remove
+     */
+    public void removePoints(int n) {
+        if (this.points == 0 && n > 0) this.suspended = true;
+
+        if (n > this.points) this.points = 0;
+        else this.points -= n;
+    }
 }

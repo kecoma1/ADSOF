@@ -7,18 +7,18 @@ package pr3.traffic.fines;
 public class Fine{
     private String licensePlate;
     private String type;
-    private String points;
+    private int points;
 
     /**
      * Constructor of the Fine class
      * @param String number plate of the car
      * @param String type of the car
-     * @param String ponts of the fine
+     * @param int points of the fine
      */
     public Fine(String licensePlate, String type, String points){
         this.licensePlate = licensePlate;
         this.type = type;
-        this.points = points;
+        this.points = Integer.parseInt(points);
     }
 
     /**
@@ -37,7 +37,7 @@ public class Fine{
      * Method getter of the points of the Fine
      * @return String with the points
      */
-    public String getPoints(){ return this.points; }
+    public int getPoints(){ return this.points; }
 
     @Override public String toString(){
         return "Fine [plate="+this.licensePlate+", Fine type="

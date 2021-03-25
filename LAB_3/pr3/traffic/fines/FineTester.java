@@ -8,6 +8,6 @@ public class FineTester {
 		List<Fine> fines = FineReader.read("fines_radar1.txt");
 		
 		for (Fine m : fines) 
-			System.out.println(m+"\n------------");	
+			System.out.println(m+"\n------------");
 	}
 }

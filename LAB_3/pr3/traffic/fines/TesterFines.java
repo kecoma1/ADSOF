@@ -1,4 +1,10 @@
-// add imports and package
+package pr3.traffic.fines;
+import java.util.Arrays;
+import pr3.traffic.drivers.*;
+import pr3.traffic.vehicles.*;
+import pr3.traffic.license.*;
+
+
 public class TesterFines {
 	public static void main(String[] args) {
 		Person ann = new Person("Ann Smith", 30);		 		// Ann 			

@@ -122,4 +122,28 @@ public abstract class Vehicle {
 		}
 		return false;
 	}
+
+	/**
+	 * Method to get the license plate of a vehicle
+	 * @param licensePlate the license of the vehicle
+	 */
+	public String getLicensePlate(){
+		return this.licensePlate;
+	}
+
+	/**
+	 * Method to get the driver of the vehicle
+	 * @param Person driver of the vehicle
+	 */
+	public Person getDriver(){
+		return this.driver;
+	}
+
+	/**
+	 * Method to get the owner of the vehicle
+	 * @param Owner owner of the vehicle
+	 */
+	public Owner getOwner(){
+		return this.owner;
+	}
 }

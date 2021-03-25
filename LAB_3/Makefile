@@ -1,4 +1,4 @@
-all: compile exe1 exe2 test1 test2 test3 clean #doc
+all: compile exe1 exe2 test1 test2 test3 test4 clean #doc
 
 compile:
 	@echo "#-----------------------"
@@ -38,6 +38,14 @@ test3:
 	@echo "#-----------------------"
 	@echo ""
 	@java pr3.traffic.license.TesterLicense
+	@echo "\n"
+
+test4:
+	@echo "#-----------------------"
+	@echo "Executing Test 4 . . ."
+	@echo "#-----------------------"
+	@echo ""
+	@java pr3.traffic.fines.TesterFines
 	@echo "\n"
 
 exe1:
