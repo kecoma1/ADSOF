@@ -67,4 +67,25 @@ public class Truck extends Vehicle{
         else 
 		    return super.getPollutionIndex();
 	}
+
+    @Override 
+    public boolean checkPassedITV(){
+        int year = LocalDate.now().getYear() - getPurchaseYear();
+        LocalDate date = this.getLastITV().getDate().minusYear(year);
+        
+        if(year < 2) return true;
+        else if(year < 6){ 
+            if (date.getYear() < 2) return true;
+            else return false;
+
+        } else if(year < 10){
+            if (date.getYear() < 1) return true;
+            else return false;
+
+        } else {
+            date = this.getLastITV().getDate().minusMonth(LocalDate.now().getMonth());
+            if (date.getYear() < 1 && date.getMonth() < 6) return true;
+            else return false;
+        }
+    }
 }

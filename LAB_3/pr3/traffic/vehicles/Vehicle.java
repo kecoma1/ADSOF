@@ -1,10 +1,12 @@
 package pr3.traffic.vehicles;
 import java.util.List;
+import java.util.ArrayList;
 
 import pr3.traffic.drivers.Owner;
 import pr3.traffic.drivers.Person;
 import pr3.traffic.license.License;
 import pr3.traffic.license.PermitKind;
+import pr3.traffic.ITV.ITV;
 
 /**
  * Class that defines a vehicle
@@ -16,6 +18,7 @@ public abstract class Vehicle {
 	private String licensePlate = null;
 	private Owner owner;
 	private Person driver;
+	private List<ITV> itvs = new ArrayList<>();
 
 	/**
 	 * Constructor of the vehicle
@@ -106,6 +109,14 @@ public abstract class Vehicle {
 	}
 
 	/**
+	 * Method to get the purchase year of a vehicle
+	 * @return The purchase year of the vehicle
+	 */
+	public int getPurchaseYear(){
+		return this.purchaseYear;
+	}
+
+	/**
 	 * Method to get the driver of the vehicle
 	 * @return Person driver of the vehicle
 	 */
@@ -119,6 +130,78 @@ public abstract class Vehicle {
 	 */
 	public Owner getOwner(){
 		return this.owner;
+	}
+
+	/**
+	 * Method to get the ITVs passed by the vehicle
+	 * @return List with the ITVs passed
+	 */
+	public ArrayList<ITV> getITV(){
+		return this.itvs;
+	}
+
+	/**
+	 * Method to get the last ITV passed by the vehicle
+	 * @return Last ITV of that vehicle
+	 */
+	public ITV getLastITV() {
+		if (this.itvs.isEmpty()) return null;
+		return this.itvs[this.itvs.size()-1];
+	}
+
+	/**
+	 * Method to pass the ITV
+	 * @param itv to be passed 
+	 */
+	public void passITV(ITV itv){
+		if (this.getLastITV().getDate().isAfter(itv.getDate()))
+			return;
+		this.itvs.add(itv);
+	}
+
+	/**
+	 * Method to check if the ITV was passed in the 
+	 * requiered time. Implementation for Cars and motorcycles
+	 * @return boolean
+	 */
+	public boolean checkPassedITV() {
+		ITV lastItv = this.getLastITV();
+		LocalDate date = LocalDate.now();
+
+		// Checking the age of the car
+		int carAge = date.getYear() - this.getPurchaseYear();
+
+		if (carAge < 4) return true; // No need of ITV
+		else if (carAge < 10) { // Every 2 years
+			if (lastItv == null) return false;
+			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return false;
+		} else { // Every year
+			if (date.minusYear(1).compareTo(lastItv.getDate()) > 0) return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Method to get the days left until next inspection
+	 * @return integer with the days left
+	 */
+	public int timeRemaining(){
+		ITV lastItv = this.getLastITV();
+		LocalDate date = LocalDate.now();
+
+		// Checking the age of the car
+		int carAge = date.getYear() - this.getPurchaseYear();
+
+		if (carAge < 4){
+			date.minus
+		}
+		else if (carAge < 10) { // Every 2 years
+			if (lastItv == null) return false;
+			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return false;
+		} else { // Every year
+			if (date.minusYear(1).compareTo(lastItv.getDate()) > 0) return false;
+		} 
 	}
 
 	/**
@@ -146,4 +229,6 @@ public abstract class Vehicle {
 		+this.numWheels()+" wheels, index:"+this.getPollutionIndex()
 		+(this.owner != null ? " owner: "+this.owner.getName()+" driver: "+this.driver.getName() : "");
 	}
+	
+	
 }
