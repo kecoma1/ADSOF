@@ -2,6 +2,8 @@ package pr3.traffic.vehicles;
 import pr3.traffic.drivers.Owner;
 import java.time.LocalDate;
 import pr3.traffic.itvs.*;
+import java.time.temporal.ChronoUnit;
+
 
 /**
  * Class that defines the Truck
@@ -72,27 +74,24 @@ public class Truck extends Vehicle {
 
     @Override 
     public boolean checkPassedItv(){
-        int year = LocalDate.now().getYear() - getPurchaseYear();
-        Itv itv = this.getLastItv();
-        
-        if(year < 2) return true;
-        else if (itv == null) return false;
+        Itv lastItv = this.getLastItv();
+		LocalDate date = LocalDate.now();
 
-        LocalDate date = itv.getDate().minusYears(year);
-        
-        if(year < 6){ 
-            if (date.getYear() < 2) return true;
-            else return false;
+		// Checking the age of the car
+		int carAge = date.getYear() - this.getPurchaseYear();
+        if (carAge < 2) return true; // No need of ITV
+        else if (carAge < 6) { // Every 2 years
+			if (lastItv == null) return false;
+			if (date.minusYears(2).compareTo(lastItv.getDate()) > 0) return false;
+		} else if (carAge < 10) { // Every 1 years
+			if (lastItv == null) return false;
+			if (date.minusYears(1).compareTo(lastItv.getDate()) > 0) return false;
+		} else { // Every 6 months
+			if (lastItv == null) return false;
+			if (date.minusMonths(6).compareTo(lastItv.getDate()) > 0) return false;
+		} 
 
-        } else if(year < 10){
-            if (date.getYear() < 1) return true;
-            else return false;
-
-        } else {
-            date = this.getLastItv().getDate().minusMonths(LocalDate.now().getMonthValue());
-            if (date.getYear() < 1 && date.getMonthValue() < 6) return true;
-            else return false;
-        }
+		return true;
     }
 
     /**
@@ -105,11 +104,11 @@ public class Truck extends Vehicle {
 		LocalDate date = LocalDate.now();
 
 		// Checking the age of the car
-		int carAge = date.getYear() - this.purchaseYear;
+		int carAge = date.getYear() - this.getPurchaseYear();
 
 		if (carAge < 2){
 			// Date of the 4th year since the buy
-			LocalDate end4Years = LocalDate.of(this.purchaseYear+4, 1, 1);
+			LocalDate end4Years = LocalDate.of(this.getPurchaseYear()+4, 1, 1);
 			return ChronoUnit.DAYS.between(date, end4Years);
 		} else if (carAge < 6) { // Every 2 years
 			if (lastItv == null) return 0;

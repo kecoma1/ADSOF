@@ -63,6 +63,12 @@ public abstract class Vehicle {
 	}
 	
 	/**
+	 * Method to get the model of the vehicle
+	 * @return Model of the vehicle
+	 */
+	public String getModel() { return this.model; }
+
+	/**
 	 * Abstract method to get the number of wheels in a vehicle
 	 * @return Number of wheels
 	 */
@@ -156,9 +162,12 @@ public abstract class Vehicle {
 	 * @param itv to be passed 
 	 */
 	public void passItv(Itv itv){
-		if (this.getLastItv().getDate().isAfter(itv.getDate()))
+		if (this.getLastItv() == null)
+			this.itvs.add(itv);
+		else if (this.getLastItv().getDate().isAfter(itv.getDate()))
 			return;
-		this.itvs.add(itv);
+		else 
+			this.itvs.add(itv);
 	}
 
 	/**

@@ -4,6 +4,8 @@ import pr3.traffic.vehicles.Vehicle;
 import pr3.traffic.drivers.Person;
 import pr3.traffic.itvs.Itv;
 import java.util.*;
+import java.io.FileWriter;  
+import java.io.IOException; 
 
 
 /**
@@ -26,10 +28,19 @@ public class FineProcessor{
      * @param str String to write in the file
      */
     public void writeFile(String str) {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("ITV_expired.txt", true));
-        writer.append(str);
+        try {
+            FileWriter myWriter = new FileWriter("ITV_expired.txt");
+            myWriter.write(str);
+            myWriter.close();
+          } catch (IOException e) {
+            System.out.println("An error occurred.");
+          }
     }
 
+    /**
+     * Method to process fines
+     * @param fines Fines to be processed
+     */
     public void process(List<Fine> fines){
         // Iterating through the fines
         for (Fine f : fines){
@@ -42,10 +53,10 @@ public class FineProcessor{
                     int pointsToRemove = 0;
 
                     // Checking if the vehicle has passed the required ITV
-                    if (v.checkPassedITV() == false) {
+                    if (v.checkPassedItv() == false) {
                         pointsToRemove += 1;
-                        str += "The vehicle "+v+" didn't pass the ITV, the driver "+penalized
-                        +" is being penalized with an additional point.\n";
+                        str += "The vehicle "+v.getModel()+" didn't pass the ITV, the driver "+penalized.getName()
+                        +" is being penalized with an additional point.\n\n";
                         this.writeFile(str);
                     }
 
@@ -61,7 +72,7 @@ public class FineProcessor{
                     pointsToRemove += f.getPoints();
                     penalized.getLicense().removePoints(pointsToRemove); 
 
-                    str += "Driver "+penalized.getName()+" loses "+f.getPoints()+" points";
+                    str += "Driver "+penalized.getName()+" loses "+pointsToRemove+" points";
                     
                     if(penalized.getLicense().getSuspended()){
                         str += "\nLicense suspended for driver "+penalized.getName();

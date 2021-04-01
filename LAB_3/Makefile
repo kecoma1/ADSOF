@@ -14,7 +14,7 @@ clean:
 	rm -f pr3/traffic/fines/*.class
 	rm -f pr3/traffic/license/*.class
 	rm -f pr3/traffic/tests/*.class
-	rm -f pr3/traffic/itvs/*.java
+	rm -f pr3/traffic/itvs/*.class
 	rm -r -f doc
 
 test1:

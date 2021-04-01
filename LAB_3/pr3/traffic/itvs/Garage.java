@@ -39,5 +39,8 @@ public class Garage {
      */
     public String getProvince(){ return this.province; }
 
+    @Override
+    public String toString() {return name+" "+address+" "+province;}
+
     
 }

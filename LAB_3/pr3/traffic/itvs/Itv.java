@@ -40,5 +40,8 @@ public class Itv {
     */
    public String getComments() { return this.comments; }
 
+   @Override
+   public String toString() {return "Date: "+ date + ", Garage: "+ garage + ", Comments: " + comments;}
+
 
 }
