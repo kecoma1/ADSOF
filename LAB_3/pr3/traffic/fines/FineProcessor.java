@@ -2,7 +2,6 @@ package pr3.traffic.fines;
 
 import pr3.traffic.vehicles.Vehicle;
 import pr3.traffic.drivers.Person;
-import pr3.traffic.itvs.Itv;
 import java.util.*;
 import java.io.FileWriter;  
 import java.io.IOException; 
@@ -66,6 +65,7 @@ public class FineProcessor{
                     
                     if(penalized.getLicense().getSuspended()){
                         str += "Driver "+penalized.getName()+" is suspended and DGT will take legal action";
+                        System.out.println(str);
                         continue;
                     }
 

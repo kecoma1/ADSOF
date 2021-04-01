@@ -1,6 +1,5 @@
 package pr3.traffic.fines;
 import java.util.*;
-import java.io.*;
 
 public class FineTester {
 	public static void main(String[] args){

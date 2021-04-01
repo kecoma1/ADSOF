@@ -1,6 +1,5 @@
 package pr3.traffic.license;
 import pr3.traffic.drivers.*;
-import pr3.traffic.license.*;
 import pr3.traffic.vehicles.*;
 
 public class TesterLicense {

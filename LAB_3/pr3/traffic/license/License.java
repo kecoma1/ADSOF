@@ -9,9 +9,9 @@ import java.util.List;
  */
 public class License {
     private int points;
-    private static int total_ids;
+    private static int totalIds;
     private int id;
-    private List<PermitKind> allowed_types = new ArrayList<>();
+    private List<PermitKind> allowedTypes = new ArrayList<>();
     private boolean suspended;
 
     /**
@@ -19,14 +19,14 @@ public class License {
      * @param p Undefined undefined number of PermitKinds
      */
     public License(PermitKind ...p) {
-        License.total_ids++;
+        License.totalIds++;
         this.points = 12;
-        this.id = License.total_ids;
+        this.id = License.totalIds;
         this.suspended = false;
 
         // Adding the allowed cars to the license
         for (PermitKind permit: p) {
-            this.allowed_types.add(permit);
+            this.allowedTypes.add(permit);
         }
     }
     
@@ -35,8 +35,8 @@ public class License {
      * @param p PermitKind to be added into the license
      */
     public void addPermit(PermitKind p) {
-        if (!this.allowed_types.contains(p))
-            this.allowed_types.add(p);
+        if (!this.allowedTypes.contains(p))
+            this.allowedTypes.add(p);
     }
 
     /**
@@ -55,7 +55,7 @@ public class License {
      * Method to get the permits of the list 
      * @return List of the permits
      */
-    public List<PermitKind> getPermitKinds() { return this.allowed_types; }
+    public List<PermitKind> getPermitKinds() { return this.allowedTypes; }
     
     /**
      * Getter of the suspended attribute
@@ -75,7 +75,7 @@ public class License {
      */
     public int getPermitAge(){
         int maximun = 18;
-        for(PermitKind p: this.allowed_types){
+        for(PermitKind p: this.allowedTypes){
             if (p.getMinimumAge() > maximun)
                 maximun=p.getMinimumAge();
         }
@@ -96,6 +96,6 @@ public class License {
 
     @Override public String toString() {
         return "License [id ="+this.id+", PermitKinds="+
-        this.allowed_types+", points="+this.points+"]";
+        this.allowedTypes+", points="+this.points+"]";
     }
 }

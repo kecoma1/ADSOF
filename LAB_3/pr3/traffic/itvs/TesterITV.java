@@ -1,5 +1,4 @@
 package pr3.traffic.itvs;
-import pr3.traffic.itvs.*;
 import pr3.traffic.fines.*;
 import pr3.traffic.drivers.*;
 import pr3.traffic.license.*;
@@ -373,6 +372,8 @@ public class TesterITV{
         Itv itv = new Itv(date, garage, "Se cuida bien");
         truck.passItv(itv);
         mot2.passItv(itv);
+
+        // ITV BAD
         LocalDate date2 = LocalDate.now().minusYears(10);
         Itv itv2 = new Itv(date2, garage, "Se cuida bien");
         car.passItv(itv2);
