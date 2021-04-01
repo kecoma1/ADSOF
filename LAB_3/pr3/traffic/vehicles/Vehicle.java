@@ -20,7 +20,7 @@ public abstract class Vehicle {
 	private String licensePlate = null;
 	private Owner owner;
 	private Person driver;
-	private List<Itv> itvs = new ArrayList<>();
+	private ArrayList<Itv> itvs = new ArrayList<>();
 
 	/**
 	 * Constructor of the vehicle
@@ -148,7 +148,7 @@ public abstract class Vehicle {
 	 */
 	public Itv getLastItv() {
 		if (this.itvs.isEmpty()) return null;
-		return this.itvs[this.itvs.size()-1];
+		return this.itvs.get(this.itvs.size()-1);
 	}
 
 	/**
@@ -171,14 +171,15 @@ public abstract class Vehicle {
 		LocalDate date = LocalDate.now();
 
 		// Checking the age of the car
-		int carAge = date.getYear() - this.PurchaseYear;
+		int carAge = date.getYear() - this.purchaseYear;
 
 		if (carAge < 4) return true; // No need of Itv
 		else if (carAge < 10) { // Every 2 years
 			if (lastItv == null) return false;
-			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return false;
+			if (date.minusYears(2).compareTo(lastItv.getDate()) > 0) return false;
 		} else { // Every year
-			if (date.minusYear(1).compareTo(lastItv.getDate()) > 0) return false;
+			if (lastItv == null) return false;
+			if (date.minusYears(1).compareTo(lastItv.getDate()) > 0) return false;
 		}
 
 		return true;
@@ -193,12 +194,12 @@ public abstract class Vehicle {
 		LocalDate date = LocalDate.now();
 
 		// Checking the age of the car
-		int carAge = date.getYear() - this.PurchaseYear;
+		int carAge = date.getYear() - this.purchaseYear;
 
 		if (carAge < 4){
 			// Date of the 4th year since the buy
 			LocalDate end4Years = LocalDate.of(this.purchaseYear+4, 1, 1);
-			return DAYS.between(date, end4Years);
+			return ChronoUnit.DAYS.between(date, end4Years);
 		}
 		else if (carAge < 10) { // Every 2 years
 			if (lastItv == null) return 0;
@@ -206,14 +207,15 @@ public abstract class Vehicle {
 			// Date of the 2nd year since the last Itv
 			LocalDate end2Years = lastItv.getDate().plusYears(2);
 
-			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return 0;
-			else return DAYS.between(date, end2Years);
+			if (date.minusYears(2).compareTo(lastItv.getDate()) > 0) return 0;
+			else return ChronoUnit.DAYS.between(date, end2Years);
 		} else { // Every year
+			if (lastItv == null) return 0;
 			// Date of the 1st year since the last Itv
 			LocalDate endYear = lastItv.getDate().plusYears(1);
 			
-			if (date.minusYear(1).compareTo(lastItv.getDate()) > 0) return 0;
-			else return DAYS.between(date, endYear);
+			if (date.minusYears(1).compareTo(lastItv.getDate()) > 0) return 0;
+			else return ChronoUnit.DAYS.between(date, endYear);
 		} 
 	}
 

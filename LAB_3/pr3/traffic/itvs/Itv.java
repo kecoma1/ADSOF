@@ -1,4 +1,4 @@
-package pr3.traffic.Itvs;
+package pr3.traffic.itvs;
 
 import java.time.LocalDate;
 

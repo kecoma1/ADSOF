@@ -4,6 +4,7 @@ import pr3.traffic.fines.*;
 import pr3.traffic.drivers.*;
 import pr3.traffic.license.*;
 import pr3.traffic.vehicles.*;
+import java.time.LocalDate;
 
 /**
  * Class to test the ITV implemented
@@ -17,7 +18,7 @@ public class TesterITV{
         Vehicle truck = new Truck("IvecoDaily", 2021, "5643 KOI", 2, kevin);
         
         Garage garage = new Garage("Garage", "Calle de los albaricoques, 12", "Madrid");
-        LocalDate date = LocalDate.now().minusYear(3);
+        LocalDate date = LocalDate.now().minusYears(3);
         Itv itv = new Itv(date, garage, "Se cuida bien");
         truck.passItv(itv);
         System.out.println(truck);
@@ -32,7 +33,7 @@ public class TesterITV{
         Vehicle truck = new Truck("IvecoDaily", 2016, "5643 KOI", 2, kevin);
         
         Garage garage = new Garage("Garage", "Calle de los albaricoques, 12", "Madrid");
-        LocalDate date = LocalDate.now().minusYear(3);
+        LocalDate date = LocalDate.now().minusYears(3);
         Itv itv = new Itv(date, garage, "Se cuida bien");
         truck.passItv(itv);
         System.out.println(truck);
@@ -47,7 +48,7 @@ public class TesterITV{
         Vehicle truck = new Truck("IvecoDaily", 2010, "5643 KOI", 2, kevin);
         
         Garage garage = new Garage("Garage", "Calle de los albaricoques, 12", "Madrid");
-        LocalDate date = LocalDate.now().minusYear(4);
+        LocalDate date = LocalDate.now().minusYears(4);
         Itv itv = new Itv(date, garage, "Se cuida bien");
         truck.passItv(itv);
         System.out.println(truck);
@@ -62,7 +63,7 @@ public class TesterITV{
         Vehicle truck = new Truck("IvecoDaily", 2010, "5643 KOI", 2, kevin);
         
         Garage garage = new Garage("Garage", "Calle de los albaricoques, 12", "Madrid");
-        LocalDate date = LocalDate.now().minusYear(4);
+        LocalDate date = LocalDate.now().minusYears(4);
         Itv itv = new Itv(date, garage, "Se cuida bien");
         truck.passItv(itv);
         System.out.println(truck);
