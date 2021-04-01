@@ -355,8 +355,8 @@ public class TesterITV{
         kevin.setLicense(new License(PermitKind.C1, PermitKind.A, PermitKind.B));
         Vehicle car = new Car("Lamborghini", 2008, "1245 HYN", true, kevin);
         Vehicle mot = new Motorcycle("Ducati", 2008, "5643 KOI", true, kevin);
-        Vehicle truck = new Truck("TractorAmarillo", 2008, "5643 KOI", 2, kevin);
-        Vehicle mot2 = new Motorcycle("Ducato", 2008, "5643 KOI", true, kevin);
+        Vehicle truck = new Truck("TractorAmarillo", 2008, "0987 ETG", 2, kevin);
+        Vehicle mot2 = new Motorcycle("Ducato", 2008, "1245 HYN", true, kevin);
 
         Vehicle fleet[] = {
             car,
