@@ -42,6 +42,7 @@ public class FineProcessor{
      * @param fines Fines to be processed
      */
     public void process(List<Fine> fines){
+        String toFile = new String();
         // Iterating through the fines
         for (Fine f : fines){
             // Looking for the vehicle in the fine
@@ -56,8 +57,8 @@ public class FineProcessor{
                     if (v.checkPassedItv() == false) {
                         pointsToRemove += 1;
                         str += "The vehicle "+v.getModel()+" didn't pass the ITV, the driver "+penalized.getName()
-                        +" is being penalized with an additional point.\n\n";
-                        this.writeFile(str);
+                        +" is being penalized with an additional point.\n";
+                        toFile += str;
                     }
 
                     // Getting the person to penalize
@@ -83,5 +84,6 @@ public class FineProcessor{
                 }
             }
         }
+        this.writeFile(toFile);
     }
 }

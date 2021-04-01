@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
-            "mainClass": "pr3.traffic.vehicles.TesterPr31"
+            "mainClass": "pr3.traffic.itvs.TesterITV"
         }
     ]
 }

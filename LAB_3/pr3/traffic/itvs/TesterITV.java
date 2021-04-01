@@ -352,17 +352,19 @@ public class TesterITV{
     /* ============================ Checking the Fines with ITV ============================  */
     private void FineToACarWithoutITV(){
         Person kevin = new Person ("Kevin de la Coba", 30); 
+        Person marcos = new Person ("Marcos Aarón Bernuy", 30); 
         kevin.setLicense(new License(PermitKind.C1, PermitKind.A, PermitKind.B));
+        marcos.setLicense(new License(PermitKind.C1, PermitKind.A, PermitKind.B));
         Vehicle car = new Car("Lamborghini", 2008, "1245 HYN", true, kevin);
-        Vehicle mot = new Motorcycle("Ducati", 2008, "5643 KOI", true, kevin);
+        Vehicle mot = new Motorcycle("Ducati", 2008, "5643 KOI", true, marcos);
         Vehicle truck = new Truck("TractorAmarillo", 2008, "0987 ETG", 2, kevin);
-        Vehicle mot2 = new Motorcycle("Ducato", 2008, "1245 HYN", true, kevin);
+        Vehicle mot2 = new Motorcycle("Ducato", 2008, "ADV2 ADF", true, marcos);
 
         Vehicle fleet[] = {
             car,
-            mot,
-            truck,
-            mot2
+            mot, //Loses 1 + 1
+            truck, //Loses 12
+            mot2 //2
         };
 
         // Passing the ITV
@@ -371,10 +373,14 @@ public class TesterITV{
         Itv itv = new Itv(date, garage, "Se cuida bien");
         truck.passItv(itv);
         mot2.passItv(itv);
+        LocalDate date2 = LocalDate.now().minusYears(10);
+        Itv itv2 = new Itv(date2, garage, "Se cuida bien");
+        car.passItv(itv2);
+        mot.passItv(itv2);
 
         System.out.println("=================\n1.Test: The Lamborghini and the Ducati didn't pass the ITV.");
         System.out.println("\nRemaining time until fine: "+ car.timeRemaining());
-        System.out.println(car.checkPassedItv() + " - expected value = false");
+        System.out.println(car.checkPassedItv() + " - expected value = false\n");
         
         FineProcessor pm = new FineProcessor(Arrays.asList(fleet));
 		pm.process(FineReader.read("fines_radar1.txt"));
