@@ -21,9 +21,7 @@ public class Person extends Owner {
         super(name);
         this.age = age;
     }
-
-    @Override public Person getRealOwner() { return this; }
-
+    
     /**
      * Method to get the age of a person
      * @return Age of the person
@@ -31,22 +29,11 @@ public class Person extends Owner {
     public int getAge() { return this.age; }
 
     /**
-     * Method to add a company to the person
-     * @param c Company to be added
+     * Method to get the companies of a person
+     * @return Companies of a person
      */
-    public void addCompany(Company c) { this.companies.add(c); }
-
-    @Override public String toString() { return super.toString(); }
-    
-    /**
-     * Method setter of the License
-     * @param License l License that will be set
-     */
-    public boolean setLicense(License l){
-        if(this.getAge() < l.getPermitAge() || l.getSuspended())
-            return false;
-        this.license = l;
-        return true;
+    public ArrayList<Company> getCompanies() {
+        return this.companies;
     }
 
     /**
@@ -56,4 +43,24 @@ public class Person extends Owner {
     public License getLicense(){
         return this.license;
     }
+    
+    /**
+     * Method to add a company to the person
+     * @param c Company to be added
+     */
+    public void addCompany(Company c) { this.companies.add(c); }
+    
+    /**
+     * Method setter of the License
+     * @param l License that will be set
+     */
+    public boolean setLicense(License l){
+        if(this.getAge() < l.getPermitAge() || l.getSuspended())
+        return false;
+        this.license = l;
+        return true;
+    }
+    
+    @Override public String toString() { return super.toString(); }
+    @Override public Person getRealOwner() { return this; }
 }

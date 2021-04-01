@@ -69,7 +69,5 @@ doc:
 	@echo "Generating doc . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javadoc -d doc -author pr3/traffic/drivers/*.java
-	javadoc -d doc -author pr3/traffic/vehicles/*.java
-	javadoc -d doc -author pr3/traffic/vehicles/*.java
+	javadoc -d doc -author pr3/traffic/drivers/*.java pr3/traffic/fines/*.java pr3/traffic/license/*.java pr3/traffic/tests/*.java pr3/traffic/vehicles/*.java
 	@echo "\n"

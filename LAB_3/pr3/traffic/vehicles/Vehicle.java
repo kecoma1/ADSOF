@@ -57,13 +57,6 @@ public abstract class Vehicle {
 		o.addVehicle(this);
 	}
 	
-	@Override public String toString() {
-		return ", model "+this.model+(this.licensePlate != null ? ", number plate: "+this.licensePlate : "")
-		+", purchase year "+this.purchaseYear+", with "
-		+this.numWheels()+" wheels, index:"+this.getPollutionIndex()
-		+(this.owner != null ? " owner: "+this.owner.getName()+" driver: "+this.driver.getName() : "");
-	}
-	
 	/**
 	 * Abstract method to get the number of wheels in a vehicle
 	 * @return Number of wheels
@@ -105,9 +98,33 @@ public abstract class Vehicle {
 	}
 
 	/**
-	 * Method to check if a person can drive a car
+	 * Method to get the license plate of a vehicle
+	 * @return The license plate of the vehicle
+	 */
+	public String getLicensePlate(){
+		return this.licensePlate;
+	}
+
+	/**
+	 * Method to get the driver of the vehicle
+	 * @return Person driver of the vehicle
+	 */
+	public Person getDriver(){
+		return this.driver;
+	}
+
+	/**
+	 * Method to get the owner of the vehicle
+	 * @return Owner of the vehicle
+	 */
+	public Owner getOwner(){
+		return this.owner;
+	}
+
+	/**
+	 * Method to check if a person can drive a vehicle
 	 * @param p Person to check 
-	 * @return True if the driver can drive the car, False if not
+	 * @return True if the driver can drive the vehicle, False if not
 	 */
 	private boolean checkDriversLicense(Person p) {
 		License license = p.getLicense();
@@ -123,27 +140,10 @@ public abstract class Vehicle {
 		return false;
 	}
 
-	/**
-	 * Method to get the license plate of a vehicle
-	 * @param licensePlate the license of the vehicle
-	 */
-	public String getLicensePlate(){
-		return this.licensePlate;
-	}
-
-	/**
-	 * Method to get the driver of the vehicle
-	 * @param Person driver of the vehicle
-	 */
-	public Person getDriver(){
-		return this.driver;
-	}
-
-	/**
-	 * Method to get the owner of the vehicle
-	 * @param Owner owner of the vehicle
-	 */
-	public Owner getOwner(){
-		return this.owner;
+	@Override public String toString() {
+		return ", model "+this.model+(this.licensePlate != null ? ", number plate: "+this.licensePlate : "")
+		+", purchase year "+this.purchaseYear+", with "
+		+this.numWheels()+" wheels, index:"+this.getPollutionIndex()
+		+(this.owner != null ? " owner: "+this.owner.getName()+" driver: "+this.driver.getName() : "");
 	}
 }

@@ -46,6 +46,18 @@ public class License {
     public int getPoints() { return this.points; }
 
     /**
+     * Getter of the Id
+     * @return Id of the license
+     */
+    public int getId() { return this.id; }
+
+    /**
+     * Method to get the permits of the list 
+     * @return List of the permits
+     */
+    public List<PermitKind> getPermitKinds() { return this.allowed_types; }
+    
+    /**
      * Getter of the suspended attribute
      * @return Boolean value
      */
@@ -56,12 +68,6 @@ public class License {
      * @param value Value to be setted
      */
     public void setSuspended(boolean value) { this.suspended = value; }
-
-    
-    @Override public String toString() {
-        return "License [id ="+this.id+", PermitKinds="+
-        this.allowed_types+", points="+this.points+"]";
-    }
 
     /**
      * Method getter of the minimun age of the permits
@@ -77,12 +83,6 @@ public class License {
     }
 
     /**
-     * Method to get the permits of the list 
-     * @return List of the permits
-     */
-    public List<PermitKind> getPermitKinds() { return this.allowed_types; }
-
-    /**
      * Method to remove points from a License, if the
      * points are 0 then the license is suspended
      * @param n Number of points to remove
@@ -92,5 +92,10 @@ public class License {
 
         if (n > this.points) this.points = 0;
         else this.points -= n;
+    }
+
+    @Override public String toString() {
+        return "License [id ="+this.id+", PermitKinds="+
+        this.allowed_types+", points="+this.points+"]";
     }
 }

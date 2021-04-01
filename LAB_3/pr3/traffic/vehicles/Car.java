@@ -44,18 +44,6 @@ public class Car extends Vehicle {
 		super(mod, a, licensePlate, o);
 		this.diesel = diesel;
 	}
-
-	@Override public int numWheels() { return 4; }
-
-	@Override public String toString() {
-		return "Car "+(this.diesel ? "diesel" : "gasoline") + ", "+ super.toString();
-	}
-	
-	@Override
-	public PollutionIndex getPollutionIndex() {
-		if (this.diesel) return PollutionIndex.C;
-		return super.getPollutionIndex();
-	}
 	
 	/**
 	 * Getter for the diesel
@@ -68,4 +56,16 @@ public class Car extends Vehicle {
 	 * @param b Value to set
 	 */
 	public void setDiesel(boolean b) { this.diesel = b; }
+
+	@Override public int numWheels() { return 4; }
+
+	@Override public String toString() {
+		return "Car "+(this.diesel ? "diesel" : "gasoline") + ", "+ super.toString();
+	}
+	
+	@Override
+	public PollutionIndex getPollutionIndex() {
+		if (this.diesel) return PollutionIndex.C;
+		return super.getPollutionIndex();
+	}
 }

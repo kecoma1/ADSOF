@@ -1,11 +1,17 @@
 package pr3.traffic.vehicles;
 import pr3.traffic.drivers.*;
+import pr3.traffic.license.License;
+import pr3.traffic.license.PermitKind;
 
 public class TesterPr31 {
 	public static void main(String[] args) {
 		Person ann = new Person("Ann Smith", 30);		 		 			
 		Person louise = new Person("Louise Lane", 17);
 		Person anthony = new Person("Anthony Johnson", 27);
+
+		/* As we developed licenses we have to set anthony a license to have the expected result */
+		anthony.setLicense(new License(PermitKind.A));
+		
 		Company fdinc = new Company("Fast Delivery Inc", ann);	// Ann is responsible for FDINC
 		
 		Vehicle fleet[] = { 

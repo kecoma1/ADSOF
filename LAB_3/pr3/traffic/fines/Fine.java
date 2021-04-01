@@ -11,9 +11,9 @@ public class Fine{
 
     /**
      * Constructor of the Fine class
-     * @param String number plate of the car
-     * @param String type of the car
-     * @param int points of the fine
+     * @param licensePlate number plate of the car
+     * @param type type of the car
+     * @param points points of the fine
      */
     public Fine(String licensePlate, String type, String points){
         this.licensePlate = licensePlate;

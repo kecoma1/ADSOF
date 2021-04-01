@@ -19,7 +19,6 @@ public class Company extends Owner{
     }
 
     @Override public String toString(){ return super.toString(); }
-
     @Override public Person getRealOwner() { return this.responsible; }
 }
 
