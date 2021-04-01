@@ -2,7 +2,7 @@ package pr3.traffic.fines;
 
 import pr3.traffic.vehicles.Vehicle;
 import pr3.traffic.drivers.Person;
-import pr3.traffic.ITV.ITV;
+import pr3.traffic.itvs.Itv;
 import java.util.*;
 
 
@@ -45,7 +45,7 @@ public class FineProcessor{
                     if (v.checkPassedITV() == false) {
                         pointsToRemove += 1;
                         str += "The vehicle "+v+" didn't pass the ITV, the driver "+penalized
-                        +" is being penalized with an additional point.\n":
+                        +" is being penalized with an additional point.\n";
                         this.writeFile(str);
                     }
 
@@ -58,7 +58,7 @@ public class FineProcessor{
                     }
 
                     //Penalizing the person
-                    pointsToRemove += f.getPoints()
+                    pointsToRemove += f.getPoints();
                     penalized.getLicense().removePoints(pointsToRemove); 
 
                     str += "Driver "+penalized.getName()+" loses "+f.getPoints()+" points";

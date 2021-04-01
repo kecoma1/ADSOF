@@ -1,3 +1,5 @@
+package pr3.traffic.itvs;
+
 /**
  * Class that defines a Garage
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy

@@ -1,7 +1,5 @@
 package pr3.traffic.vehicles;
 import pr3.traffic.drivers.Owner;
-import pr3.traffic.ITV.ITV;
-import java.time.LocalDate;
 
 /**
  * Class that defines a Car

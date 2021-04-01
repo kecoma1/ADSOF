@@ -1,12 +1,12 @@
-package pr3.traffic.ITV;
+package pr3.traffic.Itvs;
 
-import java.util.LocalDate;
+import java.time.LocalDate;
 
 /**
  * Class that defines an ITV
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy
  */
-public class ITV {
+public class Itv {
    private LocalDate date;
    private Garage garage;
    private String comments;
@@ -16,8 +16,8 @@ public class ITV {
     * @param garage Garage where the ITV was done
     * @param comments Comments on the ITV
     */
-   public ITV(Garage garage, String comments) {
-        this.date = LocalDate.now();
+   public Itv(LocalDate date, Garage garage, String comments) {
+        this.date = date;
         this.garage = garage;
         this.comments = comments;
    }
@@ -40,5 +40,5 @@ public class ITV {
     */
    public String getComments() { return this.comments; }
 
-   
+
 }

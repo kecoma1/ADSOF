@@ -1,12 +1,14 @@
 package pr3.traffic.vehicles;
 import java.util.List;
 import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import pr3.traffic.drivers.Owner;
 import pr3.traffic.drivers.Person;
 import pr3.traffic.license.License;
 import pr3.traffic.license.PermitKind;
-import pr3.traffic.ITV.ITV;
+import pr3.traffic.itvs.*;
 
 /**
  * Class that defines a vehicle
@@ -18,7 +20,7 @@ public abstract class Vehicle {
 	private String licensePlate = null;
 	private Owner owner;
 	private Person driver;
-	private List<ITV> itvs = new ArrayList<>();
+	private List<Itv> itvs = new ArrayList<>();
 
 	/**
 	 * Constructor of the vehicle
@@ -133,45 +135,45 @@ public abstract class Vehicle {
 	}
 
 	/**
-	 * Method to get the ITVs passed by the vehicle
-	 * @return List with the ITVs passed
+	 * Method to get the Itvs passed by the vehicle
+	 * @return List with the Itvs passed
 	 */
-	public ArrayList<ITV> getITV(){
+	public ArrayList<Itv> getItv(){
 		return this.itvs;
 	}
 
 	/**
-	 * Method to get the last ITV passed by the vehicle
-	 * @return Last ITV of that vehicle
+	 * Method to get the last Itv passed by the vehicle
+	 * @return Last Itv of that vehicle
 	 */
-	public ITV getLastITV() {
+	public Itv getLastItv() {
 		if (this.itvs.isEmpty()) return null;
 		return this.itvs[this.itvs.size()-1];
 	}
 
 	/**
-	 * Method to pass the ITV
+	 * Method to pass the Itv
 	 * @param itv to be passed 
 	 */
-	public void passITV(ITV itv){
-		if (this.getLastITV().getDate().isAfter(itv.getDate()))
+	public void passItv(Itv itv){
+		if (this.getLastItv().getDate().isAfter(itv.getDate()))
 			return;
 		this.itvs.add(itv);
 	}
 
 	/**
-	 * Method to check if the ITV was passed in the 
+	 * Method to check if the Itv was passed in the 
 	 * requiered time. Implementation for Cars and motorcycles
 	 * @return boolean
 	 */
-	public boolean checkPassedITV() {
-		ITV lastItv = this.getLastITV();
+	public boolean checkPassedItv() {
+		Itv lastItv = this.getLastItv();
 		LocalDate date = LocalDate.now();
 
 		// Checking the age of the car
-		int carAge = date.getYear() - this.getPurchaseYear();
+		int carAge = date.getYear() - this.PurchaseYear;
 
-		if (carAge < 4) return true; // No need of ITV
+		if (carAge < 4) return true; // No need of Itv
 		else if (carAge < 10) { // Every 2 years
 			if (lastItv == null) return false;
 			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return false;
@@ -184,23 +186,34 @@ public abstract class Vehicle {
 
 	/**
 	 * Method to get the days left until next inspection
-	 * @return integer with the days left
+	 * @return Long with the days left
 	 */
-	public int timeRemaining(){
-		ITV lastItv = this.getLastITV();
+	public long timeRemaining(){
+		Itv lastItv = this.getLastItv();
 		LocalDate date = LocalDate.now();
 
 		// Checking the age of the car
-		int carAge = date.getYear() - this.getPurchaseYear();
+		int carAge = date.getYear() - this.PurchaseYear;
 
 		if (carAge < 4){
-			date.minus
+			// Date of the 4th year since the buy
+			LocalDate end4Years = LocalDate.of(this.purchaseYear+4, 1, 1);
+			return DAYS.between(date, end4Years);
 		}
 		else if (carAge < 10) { // Every 2 years
-			if (lastItv == null) return false;
-			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return false;
+			if (lastItv == null) return 0;
+
+			// Date of the 2nd year since the last Itv
+			LocalDate end2Years = lastItv.getDate().plusYears(2);
+
+			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return 0;
+			else return DAYS.between(date, end2Years);
 		} else { // Every year
-			if (date.minusYear(1).compareTo(lastItv.getDate()) > 0) return false;
+			// Date of the 1st year since the last Itv
+			LocalDate endYear = lastItv.getDate().plusYears(1);
+			
+			if (date.minusYear(1).compareTo(lastItv.getDate()) > 0) return 0;
+			else return DAYS.between(date, endYear);
 		} 
 	}
 

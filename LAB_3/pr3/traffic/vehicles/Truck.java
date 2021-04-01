@@ -69,9 +69,9 @@ public class Truck extends Vehicle{
 	}
 
     @Override 
-    public boolean checkPassedITV(){
+    public boolean checkPassedItv(){
         int year = LocalDate.now().getYear() - getPurchaseYear();
-        LocalDate date = this.getLastITV().getDate().minusYear(year);
+        LocalDate date = this.getLastItv().getDate().minusYear(year);
         
         if(year < 2) return true;
         else if(year < 6){ 
@@ -83,9 +83,50 @@ public class Truck extends Vehicle{
             else return false;
 
         } else {
-            date = this.getLastITV().getDate().minusMonth(LocalDate.now().getMonth());
+            date = this.getLastItv().getDate().minusMonth(LocalDate.now().getMonth());
             if (date.getYear() < 1 && date.getMonth() < 6) return true;
             else return false;
         }
     }
+
+    /**
+	 * Method to get the days left until next inspection
+	 * @return Long with the days left
+	 */
+    @Override
+	public long timeRemaining(){
+		Itv lastItv = this.getLastItv();
+		LocalDate date = LocalDate.now();
+
+		// Checking the age of the car
+		int carAge = date.getYear() - this.PurchaseYear;
+
+		if (carAge < 2){
+			// Date of the 4th year since the buy
+			LocalDate end4Years = LocalDate.of(this.purchaseYear+4, 1, 1);
+			return DAYS.between(date, end4Years);
+		} else if (carAge < 6) { // Every 2 years
+			if (lastItv == null) return 0;
+
+			// Date of the 2nd year since the last Itv
+			LocalDate end2Years = lastItv.getDate().plusYears(2);
+
+			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return 0;
+			else return DAYS.between(date, end2Years);
+		} else if (carAge < 10) { // Every 1 years
+			if (lastItv == null) return 0;
+
+			// Date of the 2nd year since the last Itv
+			LocalDate endYear = lastItv.getDate().plusYears(1);
+
+			if (date.minusYear(2).compareTo(lastItv.getDate()) > 0) return 0;
+			else return DAYS.between(date, endYear);
+		} else { // Every 6 months
+			// Date of the 1st year since the last Itv
+			LocalDate end6Month = lastItv.getDate().plusMonths(6);
+			
+			if (date.minusMonths(6).compareTo(lastItv.getDate()) > 0) return 0;
+			else return DAYS.between(date, end6Month);
+		} 
+	}
 }

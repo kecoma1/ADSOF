@@ -23,7 +23,7 @@ public enum PermitKind {
         this.minimumAge = minimumAge; 
     }
 
-    /**
+    /**.
      * Getter for the minimum age attribute
      * @return Minimum age of the permit
      */
