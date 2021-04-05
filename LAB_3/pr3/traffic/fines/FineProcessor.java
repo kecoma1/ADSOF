@@ -52,6 +52,17 @@ public class FineProcessor{
                     String str = new String();
                     int pointsToRemove = 0;
 
+                    // Checking if the car has an owner
+                    if (v.getOwner() == null) {
+                        System.out.println("The car does not have an owner, no penalization done.");
+                        continue;
+                    } else
+                        penalized = v.getOwner().getRealOwner();
+
+                    // Checking if the car has a driver
+                    if (v.getDriver() != null)
+                        penalized = v.getDriver();
+
                     // Checking if the vehicle has passed the required ITV
                     if (v.checkPassedItv() == false) {
                         pointsToRemove += 1;
@@ -59,9 +70,6 @@ public class FineProcessor{
                         +" is being penalized with an additional point.\n";
                         toFile += str;
                     }
-
-                    // Getting the person to penalize
-                    if (penalized == null) penalized = v.getOwner().getRealOwner();
                     
                     if(penalized.getLicense().getSuspended()){
                         str += "Driver "+penalized.getName()+" is suspended and DGT will take legal action";
