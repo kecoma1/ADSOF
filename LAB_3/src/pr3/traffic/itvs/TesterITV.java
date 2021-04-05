@@ -384,7 +384,7 @@ public class TesterITV{
         System.out.println(car.checkPassedItv() + " - expected value = false\n");
         
         FineProcessor pm = new FineProcessor(Arrays.asList(fleet));
-		pm.process(FineReader.read("fines_radar1.txt"));
+		pm.process(FineReader.read("../txt/fines_radar1.txt"));
     }
 
 

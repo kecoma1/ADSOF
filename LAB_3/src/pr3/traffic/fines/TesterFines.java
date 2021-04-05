@@ -25,7 +25,7 @@ public class TesterFines {
 			new Motorcycle("Harley Davidson", 2003, "0987 ETG", false, Horus)};
 
 		FineProcessor pm = new FineProcessor(Arrays.asList(fleet));
-		pm.process(FineReader.read("fines_radar1.txt"));
+		pm.process(FineReader.read("../txt/fines_radar1.txt"));
 	}
 
 	private void NoOwnerAndDriverFine() {
@@ -35,7 +35,7 @@ public class TesterFines {
 			new Motorcycle("Harley Davidson", 2003, "0987 ETG", false)};
 
 		FineProcessor pm = new FineProcessor(Arrays.asList(fleet));
-		pm.process(FineReader.read("fines_radar1.txt"));
+		pm.process(FineReader.read("../txt/fines_radar1.txt"));
 	}
 
 	public static void main(String[] args) {
@@ -57,7 +57,7 @@ public class TesterFines {
 		fleet[2].passItv(new Itv(LocalDate.now(), new Garage("a", "a", "a"), "a"));
 		
 		FineProcessor pm = new FineProcessor(Arrays.asList(fleet));
-		pm.process(FineReader.read("fines_radar1.txt"));
+		pm.process(FineReader.read("../txt/fines_radar1.txt"));
 
 		TesterFines test = new TesterFines();
 

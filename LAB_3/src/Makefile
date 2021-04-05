@@ -1,4 +1,4 @@
-all: compile exe1 exe2 test1 test2 test3 test4 test5 clean #doc
+all: compile exe1 exe2 test1 test2 test3 test4 test5 clean doc
 
 compile:
 	@echo "#-----------------------"
@@ -78,5 +78,5 @@ doc:
 	@echo "Generating doc . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javadoc -d doc -author pr3/traffic/drivers/*.java pr3/traffic/fines/*.java pr3/traffic/license/*.java pr3/traffic/tests/*.java pr3/traffic/vehicles/*.java pr3/traffic/itvs/*.java
+	javadoc -d ../doc -author pr3/traffic/drivers/*.java pr3/traffic/fines/*.java pr3/traffic/license/*.java pr3/traffic/tests/*.java pr3/traffic/vehicles/*.java pr3/traffic/itvs/*.java
 	@echo "\n"

@@ -28,7 +28,7 @@ public class FineProcessor{
      */
     public void writeFile(String str) {
         try {
-            FileWriter myWriter = new FileWriter("ITV_expired.txt");
+            FileWriter myWriter = new FileWriter("../txt/ITV_expired.txt");
             myWriter.write(str);
             myWriter.close();
           } catch (IOException e) {
