@@ -16,27 +16,59 @@ public class RaceReader {
             
             // List to store the Fines
             List<Fine> vehicles = new ArrayList<>();
+
+            // Race to be returned
+            Race race;
             
             // Storing each line
             String line;
             while ((line = buffer.readLine()) != null){
+                
+                // Getting the first line of the txt
+                double length = line[0];
+                
                 int i = 0;
-                String words[];
-                words = new String[3];
+                int j = 0;
+                Vehicle vehicle;             
                 
                 // Parsing each word in the line
-                for (String word : line.split(";")){
+                for (String word : line.split(" ")){
                     words[i] = word;
                     i++;
                 }
-                
-                // Storing the lines into a Fine object
-                Fine multa = new Fine(words[0], words[1], words[2]);
-                arrayFines.add(multa);
+
+                //Making a loop to create all the Cars expected
+                if (word[1].equals("Car")){
+                    while(j<Integer.parseInt(word[0])){
+                        vehicle = new Car(Integer.parseInt(word[2]));
+                        vehicles.add(vehicle);
+                        j++;
+                    }
+                }
+
+                //Making a loop to create all the Trucks expected
+                if (word[1].equals("Truck")){
+                    while(j<Integer.parseInt(word[0])){
+                        vehicle = new Truck(Integer.parseInt(word[2]));
+                        vehicles.add(vehicle);
+                        j++;
+                    }
+                }
+
+                //Making a loop to create all the Motorcycles expected
+                if (word[1].equals("Motorcycle")){
+                    while(j<Integer.parseInt(word[0])){
+                        vehicle = new Motorcycle(Integer.parseInt(word[2]));
+                        vehicles.add(vehicle);
+                        j++;
+                    }
+                }
             }
 
+            race = new Race(length, vehicles);
+
             buffer.close();
-            return arrayFines;
+            return race;
         } catch(IOException e) { return null; }
     }
 }

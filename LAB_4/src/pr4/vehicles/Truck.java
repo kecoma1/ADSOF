@@ -16,5 +16,11 @@ public class Truck extends Vehicle {
         super(name, maxSpeed, position);
     }
     
-    
+    public String getName() {
+        return "Truck("+this.getId()+"). ";
+    }
+
+    @Override public String toString() {
+        return this.getName()+super.toString();
+    }
 }

@@ -16,4 +16,11 @@ public class Motorcycle extends Vehicle{
         super(name, maxSpeed, position);
     }
 
+    public String getName() {
+        return "Motorcycle("+this.getId()+"). ";
+    }
+
+    @Override public String toString() {
+        return this.getName()+super.toString();
+    }
 }
