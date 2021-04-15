@@ -1,7 +1,6 @@
 package pr4.vehicles;
 
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
 public abstract class Vehicle implements IVehicle {
     private double maxSpeed;
@@ -59,9 +58,14 @@ public abstract class Vehicle implements IVehicle {
         return this.maxSpeed;
     }
 
+    /**
+     * Method to get the value of the Real speed of the vehicle
+     * @return Speed of the vehicle taking into account the probability
+     */
+    public abstract double getRealSpeed();
+
     @Override public String toString() {
-        DecimalFormat df2 = new DecimalFormat("#.#");
-        return "Speed "+df2.format(this.maxSpeed)+". Actual position: "+df2.format(this.position)+"\n";
+        return ". Speed "+this.maxSpeed+". Actual position: "+this.position+"\n";
     }
 
     @Override public boolean equals(Object v) {

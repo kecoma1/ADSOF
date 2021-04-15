@@ -1,20 +1,18 @@
-all: compile clean doc
+all: compile test1 clean #doc
 
 compile:
 	@echo "#-----------------------"
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java tests/*.java
+	javac pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java
 	@echo "\n"
 
 clean:
-	rm -f pr3/traffic/drivers/*.class
-	rm -f pr3/traffic/vehicles/*.class
-	rm -f pr3/traffic/fines/*.class
-	rm -f pr3/traffic/license/*.class
-	rm -f pr3/traffic/tests/*.class
-	rm -f pr3/traffic/itvs/*.class
+	rm -f pr4/exceptions/*.class
+	rm -f pr4/races/*.class
+	rm -f pr4/vehicles/*.class
+	rm -f pr4/tests/*.class
 	rm -r -f doc
 
 test1:
@@ -22,7 +20,7 @@ test1:
 	@echo "Executing Test 1 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr3.traffic.vehicles.TesterPr31
+	@java pr4.tests.MainEx1 ../txt/race.txt
 	@echo "\n"
 
 test2:
@@ -30,7 +28,7 @@ test2:
 	@echo "Executing Test 2 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr3.traffic.fines.FineTester
+	@java pr4.tests.
 	@echo "\n"
 
 test3:
@@ -38,7 +36,7 @@ test3:
 	@echo "Executing Test 3 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr3.traffic.license.TesterLicense
+	@java pr4.tests.
 	@echo "\n"
 
 test4:
@@ -46,7 +44,7 @@ test4:
 	@echo "Executing Test 4 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr3.traffic.fines.TesterFines
+	@java pr4.tests.
 	@echo "\n"
 
 test5:
@@ -54,7 +52,7 @@ test5:
 	@echo "Executing Test 5 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr3.traffic.itvs.TesterITV
+	@java pr4.tests.
 	@echo "\n"
 
 exe1:

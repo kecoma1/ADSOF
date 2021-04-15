@@ -1,5 +1,7 @@
-package pr4.test;
+package pr4.tests;
 import pr4.races.*;
+import pr4.exceptions.RaceException;
+import java.io.IOException;
 
 public class MainEx1{
     public static void main (String[] args){

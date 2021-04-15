@@ -5,9 +5,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
+import java.util.ArrayList;
 
-import pr4.vehicles.Car;
+import pr4.vehicles.*;
 import pr4.vehicles.Vehicle;
+import pr4.exceptions.RaceException;
 
 /**
  * Class to create a race from a file.
@@ -19,80 +21,64 @@ public class RaceReader {
      * Method to read a file and create a race
      * @param filename File to be created
      * @return Race created
+     * @throws RaceException Race exception
+     * @throws IOException Exception thrown when the file is read
      */
-    public static Race read(String filename) { 
-        try {
-            // Creating the necesary objects to read a file
-            FileInputStream stream = new FileInputStream(filename);
-            InputStreamReader reader = new InputStreamReader(stream);
-            BufferedReader buffer = new BufferedReader(reader);
+    public static Race read(String filename) throws RaceException, IOException { 
+        // Creating the necesary objects to read a file
+        FileInputStream stream = new FileInputStream(filename);
+        InputStreamReader reader = new InputStreamReader(stream);
+        BufferedReader buffer = new BufferedReader(reader);
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        
+        // Storing each line
+        String line;
 
+        // Reading the length
+        line = buffer.readLine();
+        double length = Double.parseDouble(line);
 
-            // Race to be returned
-            Race race;
+        // Reading participants
+        while ((line = buffer.readLine()) != null){
+
+            String[] split = line.split(" ");
+            String quantityStr = split[0];
+            String maxSpeedStr = split[2];
+            int quantity = Integer.parseInt(quantityStr);
+            double maxSpeed = Double.parseDouble(maxSpeedStr);
+            int j = 0;
+
+            if (length <= maxSpeed) throw new RaceException("The race length is too short");
             
-            // Storing each line
-            String line;
-
-            // Reading the length
-            line = buffer.readLine();
-            int length = Integer.parseInt(line);
-
-            // Reading participants
-            while ((line = buffer.readLine()) != null){
-                String quantityStr = line.split(" ")[0];
-                String maxSpeedStr = line.split(" ")[2];
-                int quantity = Integer.parseInt(quantityStr);
-                int maxSpeed = Integer.parseInt(maxSpeedStr);
-
-                int i = 0;
-                int j = 0;
-                Vehicle vehicle;            
-                
-                // Parsing each word in the line
-                for (String word : line.split(" ")){
-                    words[i] = word;
-                    i++;
-                }
-
-                //Making a loop to create all the Cars expected
-                if (word[1].equals("Car")){
-                    while(j<Integer.parseInt(word[0])){
-                        vehicle = new Car(Integer.parseInt(word[2]));
-                        vehicles.add(vehicle);
-                        j++;
-                    }
-                }
-
-                //Making a loop to create all the Trucks expected
-                if (word[1].equals("Truck")){
-                    while(j<Integer.parseInt(word[0])){
-                        vehicle = new Truck(Integer.parseInt(word[2]));
-                        vehicles.add(vehicle);
-                        j++;
-                    }
-                }
-
-                //Making a loop to create all the Motorcycles expected
-                if (word[1].equals("Motorcycle")){
-                    while(j<Integer.parseInt(word[0])){
-                        vehicle = new Motorcycle(Integer.parseInt(word[2]));
-                        vehicles.add(vehicle);
-                        j++;
-                    }
+            // Making a loop to create all the Cars expected
+            if (split[1].equals("Car")){
+                while(j<quantity){
+                    vehicles.add(new Car(maxSpeed, 0.0));
+                    j++;
                 }
             }
 
-            race = new Race(length, vehicles);
+            // Making a loop to create all the Trucks expected
+            if (split[1].equals("Truck")){
+                while(j<quantity){
+                    vehicles.add(new Truck(maxSpeed, 0.0));
+                    j++;
+                }
+            }
 
-            buffer.close();
-            return race;
-        } catch(IOException e) { return null; }
-    }
-
-    public void buildCars(int quantity, int maxSpeed, List<Vehicle> participants) {
-        for (int i = 0; i < quantity; i++) {
-            participants.add(new Car(maxSpeed, 0.0));
+            //Making a loop to create all the Motorcycles expected
+            if (split[1].equals("Motorcycle")){
+                while(j<quantity){
+                    vehicles.add(new Motorcycle(maxSpeed, 0.0));
+                    j++;
+                }
+            }
         }
+        buffer.close();
+
+        if (vehicles.size() < 2) throw new RaceException("There are not enough vehicles in the race");
+        else if (vehicles.size() > 10) throw new RaceException("There are too many vehicles in the race");
+
+        return new Race(length, vehicles);
     }
 }

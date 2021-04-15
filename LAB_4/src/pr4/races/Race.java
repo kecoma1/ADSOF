@@ -11,7 +11,7 @@ import java.lang.Math;
  * @author Kevin de la Coba and Marcos Bernuy.
  */
 public class Race {
-    private int length;
+    private double length;
     public List<Vehicle> participants;
     
     /**
@@ -19,7 +19,7 @@ public class Race {
      * @param length length of the Race
      * @param participants List of vehicles of the race
      */
-    public Race (int length, List<Vehicle> participants){
+    public Race (double length, List<Vehicle> participants){
         this.length = length;
         this.participants = participants;
     }
@@ -31,9 +31,18 @@ public class Race {
         boolean end = false;
         String str = new String();
         int i = 1;
-
+        
         for(i = 1; !end; i++) {
-            break;
+            for(Vehicle v: participants){
+                System.out.println("--------\n");
+                System.out.println(this);
+                System.out.println("--------\n");
+
+                v.setActualPosition(v.getActualPosition()+v.getRealSpeed());
+                if (v.getActualPosition().compareTo(this.length) < 0)
+            
+                
+            }
         }
     }
 
