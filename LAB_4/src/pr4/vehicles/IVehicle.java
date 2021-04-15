@@ -1,3 +1,5 @@
+package pr4.vehicles;
+
 /**
  * Interface to define a vehicle.
  * @author Kevin de la Coba and Marcos Bernuy.

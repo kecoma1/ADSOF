@@ -30,6 +30,15 @@ public abstract class Vehicle implements IVehicle {
         return this.id;
     }
 
+    /**
+     * Method to get the distance between 2 vehicles.
+     * @param v Vehicle to check the distance with.
+     * @return Distance between the 2 vehicles. 
+     */
+    public double getDistanceBetween(Vehicle v) {
+        return Math.abs(this.getActualPosition() - v.getActualPosition());
+    }
+
     public double getActualPosition() {
         return this.position;
     }
@@ -55,8 +64,12 @@ public abstract class Vehicle implements IVehicle {
         return "Speed "+df2.format(this.maxSpeed)+". Actual position: "+df2.format(this.position)+"\n";
     }
 
-    @Override public boolean equals(Vehicle v) {
+    @Override public boolean equals(Object v) {
+        if (v==this) return true;
+        if (!(v instanceof Vehicle)) return false;
+
         // Equals compares the ID
-        return this.id.equals(v.id);
+        Vehicle vehicle = (Vehicle)v;
+        return this.id == vehicle.id;
     }
 }

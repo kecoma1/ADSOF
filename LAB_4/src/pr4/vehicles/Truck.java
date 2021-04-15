@@ -13,7 +13,7 @@ public class Truck extends Vehicle {
      * @param position Starting position of the truck.
      */
     public Truck(String name, double maxSpeed, double position) {
-        super(name, maxSpeed, position);
+        super(maxSpeed, position);
     }
     
     public String getName() {

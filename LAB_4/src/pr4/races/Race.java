@@ -12,14 +12,14 @@ import java.lang.Math;
  */
 public class Race {
     private int length;
-    public List<IVehicle> participants;
+    public List<Vehicle> participants;
     
     /**
      * Constructor of the object Race
      * @param length length of the Race
      * @param participants List of vehicles of the race
      */
-    public Race (int length, List<IVehicle> participants){
+    public Race (int length, List<Vehicle> participants){
         this.length = length;
         this.participants = participants;
     }
@@ -29,37 +29,29 @@ public class Race {
      */
     public void simulate() {
         boolean end = false;
-        String str = new String()
+        String str = new String();
         int i = 1;
 
         for(i = 1; !end; i++) {
-            
+            break;
         }
     }
 
-    /**
-     * Method to get the distance between 2 vehicles.
-     * @param v Vehicle to check the distance with.
-     * @return Distance between the 2 vehicles. 
-     */
-    public double getDistanceBetween(Vehicle v) {
-        return Math.abs(this.getActualPosition() - v.getActualPosition());
-    }
-
-    @Overrid public String toString() {}
+    @Override public String toString() {
         String str = new String();
 
         str = "Race with maximum length: "+this.length+"\n";
 
-        for (Veh)
-   v: this.participants  {
+        for (Vehicle v: this.participants)  {
            str += v.toString();
 
             // Getting the distance with the vehicles.
            for (Vehicle oponent: this.participants) {
-               if (!oponent.equals(this)) {
-                    str += "\t"+this.getName()+" distance to "+oponent.getName()+": "+this.getDistanceBetween(this)+"\n";
+               if (!oponent.equals(v)) {
+                    str += "\t"+v.getName()+" distance to "+oponent.getName()+": "+v.getDistanceBetween(oponent)+"\n";
                }
            }
         } 
+        return str;
+    }
 }
