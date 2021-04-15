@@ -23,12 +23,12 @@ test1:
 	@java pr4.tests.MainEx1 ../txt/race.txt
 	@echo "\n"
 
-test2:
+test1:
 	@echo "#-----------------------"
 	@echo "Executing Test 2 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr4.tests.
+	@java pr4.tests.MainEx2 ../txt/race.txt
 	@echo "\n"
 
 test3:

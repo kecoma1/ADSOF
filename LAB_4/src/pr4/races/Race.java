@@ -33,17 +33,23 @@ public class Race {
         int i = 1;
         
         for(i = 1; !end; i++) {
-            for(Vehicle v: participants){
-                System.out.println("--------\n");
-                System.out.println(this);
-                System.out.println("--------\n");
+            System.out.println("--------\n");
+            System.out.println("Staring Turn: "+i+"\n");
+            System.out.println(this);
+            System.out.println("Ending Turn: "+i+"\n");
+            System.out.println("--------\n");
+            
+            for(Vehicle v: participants) {
 
                 v.setActualPosition(v.getActualPosition()+v.getRealSpeed());
-                if (v.getActualPosition().compareTo(this.length) < 0)
-            
-                
+                if (v.getActualPosition()>this.length) {
+                    System.out.println(v + "\nhas won the race\n");
+                    end = true;
+                    break;
+                }
             }
         }
+        
     }
 
     @Override public String toString() {

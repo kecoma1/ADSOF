@@ -20,8 +20,8 @@ public class Motorcycle extends Vehicle {
         return "Motorcycle("+this.getId()+")";
     }
 
-    public double getRealSpeed() {
-        return this.maxSpeed;
+    @Override public double getRealSpeed() {
+        return this.getMaxSpeed();
     }
 
     @Override public String toString() {
