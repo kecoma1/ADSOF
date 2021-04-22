@@ -40,4 +40,18 @@ public interface IVehicle {
      * @return Name of the vehicle.
      */
     public String getName();
+
+    /**
+     * Method to add a component in a vehicle.
+     * @param c Component to be added.
+     * @throws InvalidComponentException Thrown in case the vehicle cannot
+     * have that component.
+     */
+    public void addComponent(IComponent c) throws InvalidComponentException;
+
+    /**
+     * Method to get the components of a vehicle.
+     * @return List containing all the components.
+     */
+    public List<IComponent> getComponents();
 }
