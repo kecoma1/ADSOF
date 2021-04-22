@@ -3,7 +3,7 @@ package pr4.vehicles;
 import java.math.RoundingMode;
 import java.util.List;
 import java.util.ArrayList;
-import pr4.components;
+import pr4.components.IComponent;
 
 public abstract class Vehicle implements IVehicle {
     private double maxSpeed;

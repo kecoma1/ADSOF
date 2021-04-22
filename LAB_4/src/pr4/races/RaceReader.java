@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import pr4.vehicles.*;
 import pr4.vehicles.Vehicle;
 import pr4.exceptions.RaceException;
+import pr4.exceptions.InvalidComponentException;
 
 /**
  * Class to create a race from a file.

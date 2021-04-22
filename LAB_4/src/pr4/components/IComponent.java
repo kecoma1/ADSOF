@@ -1,5 +1,7 @@
 package pr4.components;
 
+import pr4.vehicles.IVehicle;
+
 /**
  * Interface to define components and their behaviours.
  * @author Kevin de la Coba and Marcos Aarón Bernuy.

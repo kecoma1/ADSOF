@@ -1,7 +1,7 @@
 package pr4.vehicles;
 
 import java.lang.Math;
-import pr4.components;
+import pr4.components.IComponent;
 import pr4.exceptions.InvalidComponentException;
 
 
