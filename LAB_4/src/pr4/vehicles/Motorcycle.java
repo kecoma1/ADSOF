@@ -1,5 +1,9 @@
 package pr4.vehicles;
 
+import pr4.components;
+import pr4.exceptions.InvalidComponentException;
+
+
 /**
  * Class that defines a motorcycle.
  * @author Kevin de la Coba and Marcos Bernuy.
@@ -16,10 +20,6 @@ public class Motorcycle extends Vehicle {
         super(maxSpeed, position);
     }
 
-    public String getName() {
-        return "Motorcycle("+this.getId()+")";
-    }
-
     @Override public double getRealSpeed() {
         return this.getMaxSpeed();
     }
@@ -27,4 +27,14 @@ public class Motorcycle extends Vehicle {
     @Override public String toString() {
         return this.getName()+super.toString();
     }
+
+    /* IVehicle methods */
+
+    public String getName() {
+        return "Motorcycle("+this.getId()+")";
+    }
+
+    public void addComponent(IComponent c) throws InvalidComponentException {
+        this.getComponents().add(c);
+    } 
 }

@@ -1,5 +1,9 @@
 package pr4.vehicles;
+
 import java.lang.Math;
+import pr4.components;
+import pr4.exceptions.InvalidComponentException;
+
 
 /**
  * Class that defines a truck.
@@ -16,10 +20,6 @@ public class Truck extends Vehicle {
     public Truck(double maxSpeed, double position) {
         super(maxSpeed, position);
     }
-    
-    public String getName() {
-        return "Truck("+this.getId()+")";
-    }
 
     @Override public double getRealSpeed() {
         double random = 1 + (int)(Math.random() * ((10 - 1) + 1));
@@ -30,4 +30,14 @@ public class Truck extends Vehicle {
     @Override public String toString() {
         return this.getName()+super.toString();
     }
+
+    /* Ivehicle methods */
+
+    public String getName() {
+        return "Truck("+this.getId()+")";
+    }
+
+    public void addComponent(IComponent c) throws InvalidComponentException {
+        this.getComponents().add(c);
+    }  
 }

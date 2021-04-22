@@ -1,5 +1,10 @@
 package pr4.vehicles;
 
+import pr4.components;
+import java.util.List;
+import pr4.exceptions.InvalidComponentException;
+
+
 /**
  * Class that implements a car.
  * @author Kevin dre la Coba and Marcos Bernuy.
@@ -15,10 +20,6 @@ public class Car extends Vehicle {
         super(maxSpeed, position);
     }
 
-    public String getName() {
-        return "Car("+this.getId()+")";
-    }
-
     @Override public double getRealSpeed() {
         double random = 1 + (int)(Math.random() * ((10 - 1) + 1));
         if (random == 1) return this.getMaxSpeed(); // 1 out 10 (90% probability) 
@@ -28,4 +29,15 @@ public class Car extends Vehicle {
     @Override public String toString() {
         return this.getName()+super.toString();
     }
+
+    /* IVehicle methods */
+
+    public String getName() {
+        return "Car("+this.getId()+")";
+    }
+
+    public void addComponent(IComponent c) throws InvalidComponentException {
+        this.getComponents().add(c);
+    }
+
 }

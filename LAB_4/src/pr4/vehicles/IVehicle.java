@@ -1,5 +1,9 @@
 package pr4.vehicles;
 
+import pr4.components;
+import pr4.exceptions.InvalidComponentException;
+import java.util.List;
+
 /**
  * Interface to define a vehicle.
  * @author Kevin de la Coba and Marcos Bernuy.

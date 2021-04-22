@@ -2,6 +2,7 @@ package pr4.vehicles;
 
 import java.math.RoundingMode;
 import java.util.List;
+import java.util.ArrayList;
 import pr4.components;
 
 public abstract class Vehicle implements IVehicle {
@@ -41,6 +42,31 @@ public abstract class Vehicle implements IVehicle {
         return Math.abs(this.getActualPosition() - v.getActualPosition());
     }
 
+    /**
+     * Method to get the value of the Real speed of the vehicle
+     * @return Speed of the vehicle taking into account the probability
+     */
+    public abstract double getRealSpeed();
+
+    @Override public String toString() {
+        return ". Speed "+this.maxSpeed+". Actual position: "+this.position+"\n";
+    }
+
+    @Override public boolean equals(Object v) {
+        if (v==this) return true;
+        if (!(v instanceof Vehicle)) return false;
+
+        // Equals compares the ID
+        Vehicle vehicle = (Vehicle)v;
+        return this.id == vehicle.id;
+    }
+
+    /* IVehicle methods */
+
+    public List<IComponent> getComponents() {
+        return this.components;
+    }
+
     public double getActualPosition() {
         return this.position;
     }
@@ -59,24 +85,5 @@ public abstract class Vehicle implements IVehicle {
 
     public double getMaxSpeed() {
         return this.maxSpeed;
-    }
-
-    /**
-     * Method to get the value of the Real speed of the vehicle
-     * @return Speed of the vehicle taking into account the probability
-     */
-    public abstract double getRealSpeed();
-
-    @Override public String toString() {
-        return ". Speed "+this.maxSpeed+". Actual position: "+this.position+"\n";
-    }
-
-    @Override public boolean equals(Object v) {
-        if (v==this) return true;
-        if (!(v instanceof Vehicle)) return false;
-
-        // Equals compares the ID
-        Vehicle vehicle = (Vehicle)v;
-        return this.id == vehicle.id;
     }
 }
