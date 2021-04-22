@@ -7,7 +7,7 @@ import pr4.vehicles.IVehicle;
  */
 public class Window extends Component { 
 
-    private turnsLeftForRepairing = 0;
+    private int turnsLeftForRepairing = 0;
 
     /**
      * Constructor of the window.
@@ -32,7 +32,7 @@ public class Window extends Component {
     public void repair() {
         if (this.turnsLeftForRepairing == 0) {
             this.setDamaged(true);
-            this.turnsLeftForRepairing = this.constRepair()-1;
+            this.turnsLeftForRepairing = this.costRepair()-1;
         } else if (this.turnsLeftForRepairing == 1) {
             this.turnsLeftForRepairing -= 1;
             this.setDamaged(false);

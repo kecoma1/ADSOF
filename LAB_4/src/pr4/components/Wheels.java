@@ -5,20 +5,20 @@ import pr4.vehicles.IVehicle;
 /**
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy.
  */
-public class Wheel extends Component { 
+public class Wheels extends Component { 
 
-    private turnsLeftForRepairing = 0;
+    private int turnsLeftForRepairing = 0;
 
     /**
-     * Constructor of the wheel.
-     * @param vehicle Vehicle where the wheel is.
+     * Constructor of the wheels.
+     * @param vehicle Vehicle where the wheels is.
      */
-    public Wheel(IVehicle vehicle) {
+    public Wheels(IVehicle vehicle) {
         super(vehicle);
     }
 
     public String getName() {
-        return "Wheel";
+        return "Wheels";
     }
 
     public int costRepair() {
@@ -32,7 +32,7 @@ public class Wheel extends Component {
     public void repair() {
         if (this.turnsLeftForRepairing == 0) {
             this.setDamaged(true);
-            this.turnsLeftForRepairing = this.constRepair()-1;
+            this.turnsLeftForRepairing = this.costRepair()-1;
         } else if (this.turnsLeftForRepairing == 1) {
             this.turnsLeftForRepairing -= 1;
             this.setDamaged(false);

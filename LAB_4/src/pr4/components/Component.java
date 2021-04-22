@@ -1,4 +1,4 @@
-package pr4.component;
+package pr4.components;
 
 import pr4.vehicles.IVehicle;
 
@@ -6,8 +6,8 @@ import pr4.vehicles.IVehicle;
  * Class that defines a component. 
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy.
  */
-public abstract class Component implements IComponent{
-    private boolean damaged = False;
+public abstract class Component implements IComponent {
+    private boolean damaged = false;
     private IVehicle vehicle;
 
     /**
