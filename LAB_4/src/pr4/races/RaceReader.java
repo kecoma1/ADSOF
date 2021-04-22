@@ -53,7 +53,15 @@ public class RaceReader {
             
             // Making a loop to create all the Cars expected
             if (split[1].equals("Car")){
-                while(j<quantity){
+                int i = 0;
+                for (String s : split) {
+                    i++;
+                    if (i <= 3) continue;
+
+                    if (s.equals("Wheels")) 
+                }
+
+                while(j<quantity){Car
                     vehicles.add(new Car(maxSpeed, 0.0));
                     j++;
                 }
