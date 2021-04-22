@@ -1,6 +1,8 @@
 package pr4.vehicles;
 
 import java.math.RoundingMode;
+import java.util.List;
+import pr4.components;
 
 public abstract class Vehicle implements IVehicle {
     private double maxSpeed;
@@ -8,6 +10,7 @@ public abstract class Vehicle implements IVehicle {
     private boolean canMove = true;
     private static int nextid = 0;
     private int id;
+    private List<IComponent> components = new ArrayList<>();
 
     /**
      * Constructor of the vehicle class.

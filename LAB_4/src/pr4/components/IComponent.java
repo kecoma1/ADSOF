@@ -1,3 +1,5 @@
+package pr4.components;
+
 /**
  * Interface to define components and their behaviours.
  * @author Kevin de la Coba and Marcos Aarón Bernuy.
