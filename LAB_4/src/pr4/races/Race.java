@@ -1,10 +1,11 @@
 package pr4.races;
 
-import pr4.vehicles.IVehicle;
+import pr4.components.Component;
+import pr4.powerups.*;
 import pr4.vehicles.Vehicle;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 import java.lang.Math;
 
 /**
@@ -14,8 +15,9 @@ import java.lang.Math;
 public class Race {
     private double length;
     private List<Vehicle> participants;
+    private List<IPowerUp> powerUps = new ArrayList<>();
     private boolean allowAttacks = false;
-    private boolean powerUps = false;
+    private boolean allowPowerUps = false;
     
     /**
      * Constructor of the object Race
@@ -25,14 +27,21 @@ public class Race {
     public Race (double length, List<Vehicle> participants){
         this.length = length;
         this.participants = participants;
+        this.powerUps.add(new AttackAll());
+        this.powerUps.add(new SpeedUp());
+        this.powerUps.add(new Swap());
     }
 
     public void allowAttacks(boolean b) {
-        this.allowAttacks = true;
+        this.allowAttacks = b;
     }
 
     public void allowPowerUps(boolean b) {
-        this.powerUps = true;
+        this.allowPowerUps = b;
+    }
+
+    public List<Vehicle> getParticipants() {
+        return this.participants;
     }
 
     /**
@@ -40,13 +49,15 @@ public class Race {
      */
     public void simulate() {
         boolean end = false;
-        String str = new String();
         int i = 1;
         
         for(i = 1; !end; i++) {
             System.out.println("--------\n");
             System.out.println("Staring Turn: "+i+"\n");
+
+            // Showing state of the race
             System.out.println(this);
+
             //Attacking phase
             if (this.allowAttacks) {
                 if (i%3 == 0) { // If we are in a turn multiple of 3
@@ -57,24 +68,35 @@ public class Race {
                         if (v.canAttack()) {
                             Vehicle attacked = this.getClosestOpponentTo(v);
                             double random = 1 + (int)(Math.random() * ((2 - 1) + 1));
-                            if (attacked == null || random == 1.0){
+                            if (attacked == null || random == 1.0) {
                                 System.out.println(v.getName()+" fails attack");
                             } else {
-                                v.attack(attacked);
+                                Component c = v.attack(attacked);
+                                System.out.println(v.getName()+" attacks "+attacked.getName()+" "+c.getName());
                             }
                         } else {
                             System.out.println(v.getName()+" can not attack");
                         }
                     }
                     System.out.println("Ends attack phase.");
-                } else 
+                } else {
                     System.out.println("Not attacking turn.");
-
-
-                // Repairing the components
-                for(Vehicle v: this.participants){
-                    v.repair();
                 }
+            }
+
+            if (i%3 != 0) { // Not an attacking phase
+                if (this.allowPowerUps) { // Power up phase
+                    double random = 1 + (int)(Math.random() * ((2 - 1) + 1));
+                    if (random == 1.0) { // 10% posibilities
+                        for (Vehicle v: this.participants) {
+                            random = 1 + (int)(Math.random() * ((2 - 1) + 1));
+                        }
+                    }
+                }
+            }
+            // Repairing the components
+            for(Vehicle v: this.participants){
+                v.repair();
             }
 
             System.out.println("Ending Turn: "+i+"\n");
@@ -93,7 +115,7 @@ public class Race {
         
     }
 
-    private Vehicle getClosestOpponentTo(Vehicle v) {
+    public Vehicle getClosestOpponentTo(Vehicle v) {
         Vehicle closest = null;
         double minDistance = 30;
         double distance = 0.0;

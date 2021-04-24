@@ -1,6 +1,7 @@
 package pr4.vehicles;
 
 import java.lang.Math;
+
 import pr4.components.*;
 import pr4.exceptions.InvalidComponentException;
 
@@ -13,12 +14,11 @@ public class Truck extends Vehicle {
 
     /**
      * Constructor of the Truck class.
-     * @param name Name of the truck.
      * @param maxSpeed Maximum speed of the truck.
      * @param position Starting position of the truck.
      */
-    public Truck(double maxSpeed, double position, Race race) {
-        super(maxSpeed, position, race);
+    public Truck(double maxSpeed, double position) {
+        super(maxSpeed, position);
     }
 
     @Override public double getRealSpeed() {

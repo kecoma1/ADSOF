@@ -5,11 +5,12 @@ compile:
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java
+	javac pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java pr4/powerups/*.java
 	@echo "\n"
 
 clean:
 	rm -f pr4/exceptions/*.class
+	rm -f pr4/powerups/*.class
 	rm -f pr4/components/*.class
 	rm -f pr4/races/*.class
 	rm -f pr4/vehicles/*.class

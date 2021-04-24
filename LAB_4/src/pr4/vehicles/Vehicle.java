@@ -1,10 +1,10 @@
 package pr4.vehicles;
 
-import java.math.RoundingMode;
 import java.util.List;
 import java.util.ArrayList;
 
 import pr4.components.*;
+import pr4.races.Race;
 
 public abstract class Vehicle implements IVehicle {
     private double maxSpeed;
@@ -20,12 +20,19 @@ public abstract class Vehicle implements IVehicle {
      * @param maxSpeed Maximum speed of the vehicle.
      * @param position Starting position of the vehicle.
      */
-    public Vehicle(double maxSpeed, double position, Race race) {
+    public Vehicle(double maxSpeed, double position) {
         this.maxSpeed = maxSpeed;
         this.position = position;
-        this.nextid = this.nextid + 1;
-        this.id = this.nextid;
-        this.race = race;
+        nextid = nextid + 1;
+        this.id = nextid;
+    }
+
+    public void setRace(Race r) {
+        this.race = r;
+    }
+
+    public Race getRace() {
+        return this.race;
     }
 
     /**
@@ -51,14 +58,14 @@ public abstract class Vehicle implements IVehicle {
      */
     public abstract double getRealSpeed();
 
-    public void attack(Vehicle attacked) {
+    public Component attack(Vehicle attacked) {
         List<IComponent> enemyComponents = attacked.getComponents();
         double random = 1 + (int)(Math.random() * ((enemyComponents.size() - 1) + 1));
 
         Component c = (Component)enemyComponents.get((int)(random-1));
         c.setDamaged(true);
         c.resetTurnsForRepairing();
-        System.out.println(this.getName()+" attacks "+attacked.getName()+" "+c.getName());
+        return c;
     }
 
     public boolean canAttack() {

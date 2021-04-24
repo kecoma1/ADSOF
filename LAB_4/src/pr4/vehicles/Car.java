@@ -1,6 +1,5 @@
 package pr4.vehicles;
 
-import java.util.List;
 import pr4.exceptions.InvalidComponentException;
 import pr4.components.*;
 
@@ -16,7 +15,7 @@ public class Car extends Vehicle {
      * @param maxSpeed maximum speed of the car
      * @param position position of the car
      */
-    public Car (double maxSpeed, double position, Race race){
+    public Car (double maxSpeed, double position){
         super(maxSpeed, position);
     }
 

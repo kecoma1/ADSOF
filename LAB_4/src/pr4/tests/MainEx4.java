@@ -1,3 +1,8 @@
+package pr4.tests;
+import pr4.races.*;
+import pr4.exceptions.RaceException;
+import java.io.IOException;
+
 public class MainEx4 {
     public static void main(String [] args) {
         Race r;
