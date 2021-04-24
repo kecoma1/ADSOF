@@ -17,8 +17,8 @@ public class Truck extends Vehicle {
      * @param maxSpeed Maximum speed of the truck.
      * @param position Starting position of the truck.
      */
-    public Truck(double maxSpeed, double position) {
-        super(maxSpeed, position);
+    public Truck(double maxSpeed, double position, Race race) {
+        super(maxSpeed, position, race);
     }
 
     @Override public double getRealSpeed() {

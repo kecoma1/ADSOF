@@ -16,7 +16,7 @@ public class Car extends Vehicle {
      * @param maxSpeed maximum speed of the car
      * @param position position of the car
      */
-    public Car (double maxSpeed, double position){
+    public Car (double maxSpeed, double position, Race race){
         super(maxSpeed, position);
     }
 

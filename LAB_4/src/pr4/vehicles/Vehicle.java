@@ -13,17 +13,19 @@ public abstract class Vehicle implements IVehicle {
     private static int nextid = 0;
     private int id;
     private List<IComponent> components = new ArrayList<>();
+    private Race race;
 
     /**
      * Constructor of the vehicle class.
      * @param maxSpeed Maximum speed of the vehicle.
      * @param position Starting position of the vehicle.
      */
-    public Vehicle(double maxSpeed, double position) {
+    public Vehicle(double maxSpeed, double position, Race race) {
         this.maxSpeed = maxSpeed;
         this.position = position;
         this.nextid = this.nextid + 1;
         this.id = this.nextid;
+        this.race = race;
     }
 
     /**

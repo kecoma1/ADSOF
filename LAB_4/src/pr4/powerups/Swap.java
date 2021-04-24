@@ -5,8 +5,11 @@ public class Swap implements IPowerUp{
     public void applyPowerUp(IVehicle v){
         Vehicle opponent = v.getClosestOpponentTo();
         Double pos = opponent.getActualPosition();
+
+        // Swapping positions
         opponent.setActualPosition(v.getActualPosition());
         v.setActualPosition(pos);
+
         System.out.println("Vehicle: "+v.getName()+" applying power-up: "+this.namePowerUp);
     }
 

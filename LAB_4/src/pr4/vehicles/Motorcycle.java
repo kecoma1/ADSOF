@@ -16,8 +16,8 @@ public class Motorcycle extends Vehicle {
      * @param maxSpeed Maximum speed of the Motorcycle.
      * @param position Starting position of the Motorcycle.
      */
-    public Motorcycle(double maxSpeed, double position){
-        super(maxSpeed, position);
+    public Motorcycle(double maxSpeed, double position, Race race){
+        super(maxSpeed, position, race);
     }
 
     @Override public double getRealSpeed() {
