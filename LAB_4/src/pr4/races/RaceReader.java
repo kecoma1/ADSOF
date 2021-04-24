@@ -75,10 +75,10 @@ public class RaceReader {
                     
                     // Adding components
                     try {
-                        if (bananaDispenser) c.addComponent(new BananaDispenser(c));
                         if (engine) c.addComponent(new Engine(c));
-                        if (window) c.addComponent(new Window(c));
                         if (wheels) c.addComponent(new Wheels(c));
+                        if (window) c.addComponent(new Window(c));
+                        if (bananaDispenser) c.addComponent(new BananaDispenser(c));
                     } catch(InvalidComponentException e) {
                         System.out.println(e.getError());
                     }
@@ -105,10 +105,10 @@ public class RaceReader {
                     
                     // Adding components
                     try {
-                        if (bananaDispenser) t.addComponent(new BananaDispenser(t));
                         if (engine) t.addComponent(new Engine(t));
-                        if (window) t.addComponent(new Window(t));
                         if (wheels) t.addComponent(new Wheels(t));
+                        if (window) t.addComponent(new Window(t));
+                        if (bananaDispenser) t.addComponent(new BananaDispenser(t));
                     } catch(InvalidComponentException e) {
                         System.out.println(e.getError());
                     }
@@ -135,10 +135,10 @@ public class RaceReader {
                     
                     // Adding components
                     try {
-                        if (bananaDispenser) m.addComponent(new BananaDispenser(m));
                         if (engine) m.addComponent(new Engine(m));
-                        if (window) m.addComponent(new Window(m));
                         if (wheels) m.addComponent(new Wheels(m));
+                        if (window) m.addComponent(new Window(m));
+                        if (bananaDispenser) m.addComponent(new BananaDispenser(m));
                     } catch(InvalidComponentException e) {
                         System.out.println(e.getError());
                     }
