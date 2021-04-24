@@ -12,7 +12,8 @@ import java.lang.Math;
  */
 public class Race {
     private double length;
-    public List<Vehicle> participants;
+    private List<Vehicle> participants;
+    private boolean allowAttacks = false;
     
     /**
      * Constructor of the object Race
@@ -22,6 +23,10 @@ public class Race {
     public Race (double length, List<Vehicle> participants){
         this.length = length;
         this.participants = participants;
+    }
+
+    public void allowAttacks(boolean b) {
+        this.allowAttacks = true;
     }
 
     /**
@@ -36,6 +41,15 @@ public class Race {
             System.out.println("--------\n");
             System.out.println("Staring Turn: "+i+"\n");
             System.out.println(this);
+            //Attacking phase
+            if (i%3 == 0) {
+                System.out.println("Starting attack phase.");
+                
+                
+                
+            } else 
+                System.out.println("Not attacking turn.");
+
             System.out.println("Ending Turn: "+i+"\n");
             System.out.println("--------\n");
             

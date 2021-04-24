@@ -8,7 +8,7 @@ public class MainEx3 {
         Race r;
         try {
             r = RaceReader.read(args[0]);
-            //r.allowAttacks(true);
+            r.allowAttacks(true);
             r.simulate();
         } catch (IOException e) {
             System.out.println("Error reading the file");

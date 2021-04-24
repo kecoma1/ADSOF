@@ -3,8 +3,7 @@ package pr4.vehicles;
 import java.math.RoundingMode;
 import java.util.List;
 import java.util.ArrayList;
-import pr4.components.IComponent;
-import pr4.components.Component;
+import pr4.components.*;
 
 public abstract class Vehicle implements IVehicle {
     private double maxSpeed;
@@ -48,6 +47,13 @@ public abstract class Vehicle implements IVehicle {
      * @return Speed of the vehicle taking into account the probability
      */
     public abstract double getRealSpeed();
+
+    public boolean canAttack() {
+        for (IComponent c: this.components)
+            if (c instanceof BananaDispenser) return true;
+        
+        return false;
+    }
 
     @Override public String toString() {
         String s = new String();
