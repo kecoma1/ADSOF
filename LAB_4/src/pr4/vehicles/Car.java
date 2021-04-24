@@ -37,6 +37,9 @@ public class Car extends Vehicle {
     }
 
     public void addComponent(IComponent c) throws InvalidComponentException {
+        if (!(c instanceof BananaDispenser) || !(c instanceof Engine) 
+        || !(c instanceof Wheels) || !(c instanceof Window))
+            throw new InvalidComponentException("Component "+c.getName()+" is not valid for Vehicle "+this.getName()+".\n");
         this.getComponents().add(c);
     }
 
