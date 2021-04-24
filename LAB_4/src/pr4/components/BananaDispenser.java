@@ -7,9 +7,6 @@ import pr4.vehicles.IVehicle;
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy.
  */
 public class BananaDispenser extends Component { 
-
-    private int turnsLeftForRepairing = 0;
-
     /**
      * Constructor of the banana dispenser.
      * @param vehicle Vehicle where the banana dispenser is.
@@ -27,18 +24,7 @@ public class BananaDispenser extends Component {
     }
 
     public boolean isCritical() {
-        return true;
-    }
-
-    public void repair() {
-        if (this.turnsLeftForRepairing == 0) {
-            this.setDamaged(true);
-            this.turnsLeftForRepairing = this.costRepair()-1;
-        } else if (this.turnsLeftForRepairing == 1) {
-            this.turnsLeftForRepairing -= 1;
-            this.setDamaged(false);
-        } else
-            this.turnsLeftForRepairing -= 1;
+        return false;
     }
 
     @Override

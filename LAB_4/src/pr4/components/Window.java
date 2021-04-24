@@ -7,8 +7,6 @@ import pr4.vehicles.IVehicle;
  */
 public class Window extends Component { 
 
-    private int turnsLeftForRepairing = 0;
-
     /**
      * Constructor of the window.
      * @param vehicle Vehicle where the window is.
@@ -27,17 +25,6 @@ public class Window extends Component {
 
     public boolean isCritical() {
         return false;
-    }
-
-    public void repair() {
-        if (this.turnsLeftForRepairing == 0) {
-            this.setDamaged(true);
-            this.turnsLeftForRepairing = this.costRepair()-1;
-        } else if (this.turnsLeftForRepairing == 1) {
-            this.turnsLeftForRepairing -= 1;
-            this.setDamaged(false);
-        } else
-            this.turnsLeftForRepairing -= 1;
     }
 
     @Override

@@ -23,8 +23,8 @@ public class Truck extends Vehicle {
 
     @Override public double getRealSpeed() {
         double random = 1 + (int)(Math.random() * ((10 - 1) + 1));
-        if (random == 1) return this.getMaxSpeed(); // 1 out 10 (90% probability) 
-        else return this.getMaxSpeed()*0.8;
+        if (random == 1.0) return this.getMaxSpeed()*0.8; // 1 out 10 (90% probability) 
+        else return this.getMaxSpeed();
     }
 
     @Override public String toString() {

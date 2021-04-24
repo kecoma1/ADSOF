@@ -3,10 +3,6 @@ package pr4.components;
 import pr4.vehicles.IVehicle;
 
 public class Engine extends Component{
-
-    private int turnsLeftForRepairing = 0;
-
-
     /**
      * Constructor for the engine.
      * @param vehicle Vehicle that contains the engine.
@@ -25,17 +21,6 @@ public class Engine extends Component{
 
     public boolean isCritical() {
         return true;
-    }
-
-    public void repair() {
-        if (this.turnsLeftForRepairing == 0) {
-            this.setDamaged(true);
-            this.turnsLeftForRepairing = this.costRepair()-1;
-        } else if (this.turnsLeftForRepairing == 1) {
-            this.turnsLeftForRepairing -= 1;
-            this.setDamaged(false);
-        } else
-            this.turnsLeftForRepairing -= 1;
     }
 
     @Override

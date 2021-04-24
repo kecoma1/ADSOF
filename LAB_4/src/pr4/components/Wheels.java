@@ -6,9 +6,6 @@ import pr4.vehicles.IVehicle;
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy.
  */
 public class Wheels extends Component { 
-
-    private int turnsLeftForRepairing = 0;
-
     /**
      * Constructor of the wheels.
      * @param vehicle Vehicle where the wheels is.
@@ -28,18 +25,7 @@ public class Wheels extends Component {
     public boolean isCritical() {
         return true;
     }
-
-    public void repair() {
-        if (this.turnsLeftForRepairing == 0) {
-            this.setDamaged(true);
-            this.turnsLeftForRepairing = this.costRepair()-1;
-        } else if (this.turnsLeftForRepairing == 1) {
-            this.turnsLeftForRepairing -= 1;
-            this.setDamaged(false);
-        } else
-            this.turnsLeftForRepairing -= 1;
-    }
-
+    
     @Override
     public String toString(){
         return "->"+this.getName()+". "+super.toString();

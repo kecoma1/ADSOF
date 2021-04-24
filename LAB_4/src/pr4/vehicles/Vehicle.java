@@ -3,6 +3,7 @@ package pr4.vehicles;
 import java.math.RoundingMode;
 import java.util.List;
 import java.util.ArrayList;
+
 import pr4.components.*;
 
 public abstract class Vehicle implements IVehicle {
@@ -48,11 +49,33 @@ public abstract class Vehicle implements IVehicle {
      */
     public abstract double getRealSpeed();
 
+    public void attack(Vehicle attacked) {
+        List<IComponent> enemyComponents = attacked.getComponents();
+        double random = 1 + (int)(Math.random() * ((enemyComponents.size() - 1) + 1));
+
+        Component c = (Component)enemyComponents.get((int)(random-1));
+        c.setDamaged(true);
+        c.resetTurnsForRepairing();
+        System.out.println(this.getName()+" attacks "+attacked.getName()+" "+c.getName());
+    }
+
     public boolean canAttack() {
         for (IComponent c: this.components)
-            if (c instanceof BananaDispenser) return true;
+            if (c instanceof BananaDispenser) {
+                return !c.isDamaged();
+            }
         
         return false;
+    }
+
+    public void repair() {
+        for (IComponent c: this.components) {
+            if (c.isDamaged()) {
+                Component comp = (Component)c;
+                comp.repair();
+                System.out.println(this.getName()+" "+comp.getName()+" is being repaired "+comp.getTurnsForRepairing());
+            }
+        }
     }
 
     @Override public String toString() {
