@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Launch Current File",
             "request": "launch",
-            "mainClass": "pr4.tests.MainEx2",
+            "mainClass": "pr4.tests.MainEx3",
             "args": ["race.txt"]
         }
     ]

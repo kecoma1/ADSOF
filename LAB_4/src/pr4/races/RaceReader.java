@@ -75,10 +75,25 @@ public class RaceReader {
                     
                     // Adding components
                     try {
-                        if (engine) c.addComponent(new Engine(c));
-                        if (wheels) c.addComponent(new Wheels(c));
-                        if (window) c.addComponent(new Window(c));
-                        if (bananaDispenser) c.addComponent(new BananaDispenser(c));
+                        if (engine) c.addComponent(new Engine(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+                    
+                    try {
+                        if (wheels) c.addComponent(new Wheels(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+                    
+                    try {
+                        if (window) c.addComponent(new Window(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+
+                    try {
+                        if (bananaDispenser) m.addComponent(new BananaDispenser(m));
                     } catch(InvalidComponentException e) {
                         System.out.println(e.getError());
                     }
@@ -105,10 +120,25 @@ public class RaceReader {
                     
                     // Adding components
                     try {
-                        if (engine) t.addComponent(new Engine(t));
-                        if (wheels) t.addComponent(new Wheels(t));
-                        if (window) t.addComponent(new Window(t));
-                        if (bananaDispenser) t.addComponent(new BananaDispenser(t));
+                        if (engine) m.addComponent(new Engine(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+                    
+                    try {
+                        if (wheels) m.addComponent(new Wheels(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+                    
+                    try {
+                        if (window) m.addComponent(new Window(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+
+                    try {
+                        if (bananaDispenser) m.addComponent(new BananaDispenser(m));
                     } catch(InvalidComponentException e) {
                         System.out.println(e.getError());
                     }
@@ -136,8 +166,23 @@ public class RaceReader {
                     // Adding components
                     try {
                         if (engine) m.addComponent(new Engine(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+                    
+                    try {
                         if (wheels) m.addComponent(new Wheels(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+                    
+                    try {
                         if (window) m.addComponent(new Window(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.println(e.getError());
+                    }
+
+                    try {
                         if (bananaDispenser) m.addComponent(new BananaDispenser(m));
                     } catch(InvalidComponentException e) {
                         System.out.println(e.getError());
