@@ -61,8 +61,8 @@ public class RaceReader {
             // Making a loop to create all the Cars expected
             if (split[1].equals("Car")){
                 for (String s : split) {
-                    if (i < 3) continue;
-                    else i++;
+                    i++;
+                    if (i <= 3) continue;
 
                     if (s.equals("BananaDispenser")) bananaDispenser = true;
                     else if (s.equals("Engine")) engine = true;
@@ -76,9 +76,9 @@ public class RaceReader {
                     // Adding components
                     try {
                         if (bananaDispenser) c.addComponent(new BananaDispenser(c));
-                        else if (engine) c.addComponent(new Engine(c));
-                        else if (window) c.addComponent(new Window(c));
-                        else if (wheels) c.addComponent(new Wheels(c));
+                        if (engine) c.addComponent(new Engine(c));
+                        if (window) c.addComponent(new Window(c));
+                        if (wheels) c.addComponent(new Wheels(c));
                     } catch(InvalidComponentException e) {
                         System.out.print(e);
                     }
@@ -91,8 +91,8 @@ public class RaceReader {
             // Making a loop to create all the Trucks expected
             if (split[1].equals("Truck")){
                 for (String s : split) {
-                    if (i < 3) continue;
-                    else i++;
+                    i++;
+                    if (i <= 3) continue;
 
                     if (s.equals("BananaDispenser")) bananaDispenser = true;
                     else if (s.equals("Engine")) engine = true;
@@ -106,9 +106,9 @@ public class RaceReader {
                     // Adding components
                     try {
                         if (bananaDispenser) t.addComponent(new BananaDispenser(t));
-                        else if (engine) t.addComponent(new Engine(t));
-                        else if (window) t.addComponent(new Window(t));
-                        else if (wheels) t.addComponent(new Wheels(t));
+                        if (engine) t.addComponent(new Engine(t));
+                        if (window) t.addComponent(new Window(t));
+                        if (wheels) t.addComponent(new Wheels(t));
                     } catch(InvalidComponentException e) {
                         System.out.print(e);
                     }
@@ -121,8 +121,8 @@ public class RaceReader {
             //Making a loop to create all the Motorcycles expected
             if (split[1].equals("Motorcycle")){
                 for (String s : split) {
-                    if (i < 3) continue;
-                    else i++;
+                    i++;
+                    if (i <= 3) continue;
 
                     if (s.equals("BananaDispenser")) bananaDispenser = true;
                     else if (s.equals("Engine")) engine = true;
@@ -136,9 +136,9 @@ public class RaceReader {
                     // Adding components
                     try {
                         if (bananaDispenser) m.addComponent(new BananaDispenser(m));
-                        else if (engine) m.addComponent(new Engine(m));
-                        else if (window) m.addComponent(new Window(m));
-                        else if (wheels) m.addComponent(new Wheels(m));
+                        if (engine) m.addComponent(new Engine(m));
+                        if (window) m.addComponent(new Window(m));
+                        if (wheels) m.addComponent(new Wheels(m));
                     } catch(InvalidComponentException e) {
                         System.out.print(e);
                     }
