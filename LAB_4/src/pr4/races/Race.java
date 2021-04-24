@@ -58,14 +58,14 @@ public class Race {
         str = "Race with maximum length: "+this.length+"\n";
 
         for (Vehicle v: this.participants)  {
-           str += v.toString();
+            str += v.toString();
 
             // Getting the distance with the vehicles.
-           for (Vehicle oponent: this.participants) {
-               if (!oponent.equals(v)) {
+            for (Vehicle oponent: this.participants) {
+                if (!oponent.equals(v)) {
                     str += "\t"+v.getName()+" distance to "+oponent.getName()+": "+v.getDistanceBetween(oponent)+"\n";
-               }
-           }
+                }
+            }
         } 
         return str;
     }

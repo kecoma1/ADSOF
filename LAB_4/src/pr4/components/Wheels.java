@@ -18,7 +18,7 @@ public class Wheels extends Component {
     }
 
     public String getName() {
-        return "Wheels";
+        return "Wheels. ";
     }
 
     public int costRepair() {
@@ -38,5 +38,10 @@ public class Wheels extends Component {
             this.setDamaged(false);
         } else
             this.turnsLeftForRepairing -= 1;
+    }
+
+    @Override
+    public String toString(){
+        return "->"+this.getName()+super.toString();
     }
 }

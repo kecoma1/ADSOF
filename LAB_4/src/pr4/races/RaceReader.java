@@ -68,7 +68,6 @@ public class RaceReader {
                     else if (s.equals("Engine")) engine = true;
                     else if (s.equals("Window")) window = true;
                     else if (s.equals("Wheels")) wheels = true;
-
                 }
 
                 while(j<quantity){
@@ -91,16 +90,60 @@ public class RaceReader {
 
             // Making a loop to create all the Trucks expected
             if (split[1].equals("Truck")){
+                for (String s : split) {
+                    if (i < 3) continue;
+                    else i++;
+
+                    if (s.equals("BananaDispenser")) bananaDispenser = true;
+                    else if (s.equals("Engine")) engine = true;
+                    else if (s.equals("Window")) window = true;
+                    else if (s.equals("Wheels")) wheels = true;
+                }
+
                 while(j<quantity){
-                    vehicles.add(new Truck(maxSpeed, 0.0));
+                    Truck t = new Truck(maxSpeed, 0.0);
+                    
+                    // Adding components
+                    try {
+                        if (bananaDispenser) t.addComponent(new BananaDispenser(t));
+                        else if (engine) t.addComponent(new Engine(t));
+                        else if (window) t.addComponent(new Window(t));
+                        else if (wheels) t.addComponent(new Wheels(t));
+                    } catch(InvalidComponentException e) {
+                        System.out.print(e);
+                    }
+
+                    vehicles.add(t);
                     j++;
                 }
             }
 
             //Making a loop to create all the Motorcycles expected
             if (split[1].equals("Motorcycle")){
+                for (String s : split) {
+                    if (i < 3) continue;
+                    else i++;
+
+                    if (s.equals("BananaDispenser")) bananaDispenser = true;
+                    else if (s.equals("Engine")) engine = true;
+                    else if (s.equals("Window")) window = true;
+                    else if (s.equals("Wheels")) wheels = true;
+                }
+
                 while(j<quantity){
-                    vehicles.add(new Motorcycle(maxSpeed, 0.0));
+                    Motorcycle m = new Motorcycle(maxSpeed, 0.0);
+                    
+                    // Adding components
+                    try {
+                        if (bananaDispenser) m.addComponent(new BananaDispenser(m));
+                        else if (engine) m.addComponent(new Engine(m));
+                        else if (window) m.addComponent(new Window(m));
+                        else if (wheels) m.addComponent(new Wheels(m));
+                    } catch(InvalidComponentException e) {
+                        System.out.print(e);
+                    }
+
+                    vehicles.add(m);
                     j++;
                 }
             }

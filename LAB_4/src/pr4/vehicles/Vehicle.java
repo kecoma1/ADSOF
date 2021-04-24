@@ -4,6 +4,7 @@ import java.math.RoundingMode;
 import java.util.List;
 import java.util.ArrayList;
 import pr4.components.IComponent;
+import pr4.components.Component;
 
 public abstract class Vehicle implements IVehicle {
     private double maxSpeed;
@@ -49,7 +50,13 @@ public abstract class Vehicle implements IVehicle {
     public abstract double getRealSpeed();
 
     @Override public String toString() {
-        return ". Speed "+this.maxSpeed+". Actual position: "+this.position+"\n";
+        String s = new String();
+
+        for (IComponent c: this.getComponents()) {
+            s += c.toString();
+        }
+
+        return ". Speed "+this.maxSpeed+". Actual position: "+this.position+"\n"+s;
     }
 
     @Override public boolean equals(Object v) {

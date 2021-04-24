@@ -19,7 +19,7 @@ public class BananaDispenser extends Component {
     }
 
     public String getName() {
-        return "Banana dispenser";
+        return "Banana dispenser. ";
     }
 
     public int costRepair() {
@@ -39,5 +39,10 @@ public class BananaDispenser extends Component {
             this.setDamaged(false);
         } else
             this.turnsLeftForRepairing -= 1;
+    }
+
+    @Override
+    public String toString(){
+        return "->"+this.getName()+super.toString();
     }
 }

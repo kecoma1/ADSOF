@@ -18,7 +18,7 @@ public class Window extends Component {
     }
 
     public String getName() {
-        return "Window";
+        return "Window. ";
     }
 
     public int costRepair() {
@@ -38,5 +38,10 @@ public class Window extends Component {
             this.setDamaged(false);
         } else
             this.turnsLeftForRepairing -= 1;
+    }
+
+    @Override
+    public String toString(){
+        return "->"+this.getName()+super.toString();
     }
 }

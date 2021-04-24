@@ -30,4 +30,9 @@ public abstract class Component implements IComponent {
     public IVehicle getVehicle() {
         return this.vehicle;
     }
+
+    @Override
+    public String toString() {
+        return "Is damaged: "+this.isDamaged()+". Is critical: "+this.isCritical()+".\n";
+    }
 }

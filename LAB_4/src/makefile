@@ -1,4 +1,4 @@
-all: compile test1 clean #doc
+all: compile test1 test2 test3 clean #doc
 
 compile:
 	@echo "#-----------------------"
@@ -24,7 +24,7 @@ test1:
 	@java pr4.tests.MainEx1 ../txt/race.txt
 	@echo "\n"
 
-test1:
+test2:
 	@echo "#-----------------------"
 	@echo "Executing Test 2 . . ."
 	@echo "#-----------------------"
@@ -37,7 +37,7 @@ test3:
 	@echo "Executing Test 3 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr4.tests.
+	@java pr4.tests.MainEx3 ../txt/race.txt
 	@echo "\n"
 
 test4:
