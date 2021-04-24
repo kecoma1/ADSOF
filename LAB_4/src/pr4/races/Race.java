@@ -7,6 +7,8 @@ import pr4.vehicles.Vehicle;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 /**
  * Class that implements a race.
@@ -18,6 +20,8 @@ public class Race {
     private List<IPowerUp> powerUps = new ArrayList<>();
     private boolean allowAttacks = false;
     private boolean allowPowerUps = false;
+    private static DecimalFormat df = new DecimalFormat("0.0");
+
     
     /**
      * Constructor of the object Race
@@ -27,9 +31,19 @@ public class Race {
     public Race (double length, List<Vehicle> participants){
         this.length = length;
         this.participants = participants;
+
+        // Adding power-ups
         this.powerUps.add(new AttackAll());
-        this.powerUps.add(new SpeedUp());
+        this.powerUps.add(new Teleport());
         this.powerUps.add(new Swap());
+
+        // Setting the race in all participants
+        for (Vehicle v: participants) 
+            v.setRace(this);
+    }
+
+    public static DecimalFormat getDecimalFormat() {
+        return df;
     }
 
     public void allowAttacks(boolean b) {
@@ -67,12 +81,12 @@ public class Race {
                     for (Vehicle v: this.participants) {
                         if (v.canAttack()) {
                             Vehicle attacked = this.getClosestOpponentTo(v);
-                            double random = 1 + (int)(Math.random() * ((2 - 1) + 1));
-                            if (attacked == null || random == 1.0) {
+                            double random = 1 + (int)(Math.random() * ((2 - 1) + 1)); // 50% probability of generating a 1
+                            
+                            if (attacked == null || random == 1.0 || v.getDistanceBetween(attacked) > 30.0) {
                                 System.out.println(v.getName()+" fails attack");
                             } else {
-                                Component c = v.attack(attacked);
-                                System.out.println(v.getName()+" attacks "+attacked.getName()+" "+c.getName());
+                                v.attack(attacked);
                             }
                         } else {
                             System.out.println(v.getName()+" can not attack");
@@ -83,17 +97,22 @@ public class Race {
                     System.out.println("Not attacking turn.");
                 }
             }
-
-            if (i%3 != 0) { // Not an attacking phase
+            
+            if (i > 3 && i%3 != 0) { // Not an attacking phase
                 if (this.allowPowerUps) { // Power up phase
-                    double random = 1 + (int)(Math.random() * ((2 - 1) + 1));
+                    double random = 1 + (int)(Math.random() * ((10 - 1) + 1));
+                    
                     if (random == 1.0) { // 10% posibilities
+                        System.out.println("Turn with power ups");
+                        
                         for (Vehicle v: this.participants) {
-                            random = 1 + (int)(Math.random() * ((2 - 1) + 1));
+                            random = 1 + (int)(Math.random() * ((3 - 1) + 1));
+                            this.powerUps.get((int)(random-1)).applyPowerUp(v);
                         }
                     }
                 }
             }
+
             // Repairing the components
             for(Vehicle v: this.participants){
                 v.repair();
@@ -117,7 +136,7 @@ public class Race {
 
     public Vehicle getClosestOpponentTo(Vehicle v) {
         Vehicle closest = null;
-        double minDistance = 30;
+        double minDistance = this.length;
         double distance = 0.0;
         for (Vehicle o: this.participants) {
             distance = v.getDistanceBetween(o);
@@ -143,7 +162,7 @@ public class Race {
             // Getting the distance with the vehicles.
             for (Vehicle oponent: this.participants) {
                 if (!oponent.equals(v)) {
-                    str += "\t"+v.getName()+" distance to "+oponent.getName()+": "+v.getDistanceBetween(oponent)+"\n";
+                    str += "\t"+v.getName()+" distance to "+oponent.getName()+": "+df.format(v.getDistanceBetween(oponent))+"\n";
                 }
             }
         } 

@@ -2,6 +2,8 @@ package pr4.vehicles;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import pr4.components.*;
 import pr4.races.Race;
@@ -58,14 +60,14 @@ public abstract class Vehicle implements IVehicle {
      */
     public abstract double getRealSpeed();
 
-    public Component attack(Vehicle attacked) {
+    public void attack(Vehicle attacked) {
         List<IComponent> enemyComponents = attacked.getComponents();
         double random = 1 + (int)(Math.random() * ((enemyComponents.size() - 1) + 1));
 
         Component c = (Component)enemyComponents.get((int)(random-1));
         c.setDamaged(true);
         c.resetTurnsForRepairing();
-        return c;
+        System.out.println(this.getName()+" attacks "+attacked.getName()+" "+c.getName());
     }
 
     public boolean canAttack() {
@@ -89,12 +91,13 @@ public abstract class Vehicle implements IVehicle {
 
     @Override public String toString() {
         String s = new String();
+        DecimalFormat df = this.race.getDecimalFormat();
 
         for (IComponent c: this.getComponents()) {
             s += c.toString();
         }
 
-        return ". Speed "+this.maxSpeed+". Actual position: "+this.position+"\n"+s;
+        return ". Speed "+df.format(this.maxSpeed)+". Actual position: "+df.format(this.position)+"\n"+s;
     }
 
     @Override public boolean equals(Object v) {

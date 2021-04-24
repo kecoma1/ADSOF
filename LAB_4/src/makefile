@@ -1,4 +1,4 @@
-all: compile test1 test2 test3 clean #doc
+all: compile test1 test2 test3 test4 clean #doc
 
 compile:
 	@echo "#-----------------------"
@@ -46,31 +46,7 @@ test4:
 	@echo "Executing Test 4 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr4.tests.
-	@echo "\n"
-
-test5:
-	@echo "#-----------------------"
-	@echo "Executing Test 5 . . ."
-	@echo "#-----------------------"
-	@echo ""
-	@java pr4.tests.
-	@echo "\n"
-
-exe1:
-	@echo "#-----------------------"
-	@echo "Executing Example1 of previous assignment . . ."
-	@echo "#-----------------------"
-	@echo ""
-	@java pr3.traffic.tests.Example1
-	@echo "\n"
-
-exe2:
-	@echo "#-----------------------"
-	@echo "Executing Example2 of previous assignment . . ."
-	@echo "#-----------------------"
-	@echo ""
-	@java pr3.traffic.tests.Example2
+	@java pr4.tests.MainEx4 ../txt/race.txt
 	@echo "\n"
 
 doc:
@@ -78,5 +54,5 @@ doc:
 	@echo "Generating doc . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javadoc -d ../doc -author pr4/exceptions/*.java pr4/races/*.java pr4/vehicles/*.java
+	javadoc -d ../doc -author pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java pr4/powerups/*.java
 	@echo "\n"

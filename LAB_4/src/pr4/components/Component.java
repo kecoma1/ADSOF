@@ -48,7 +48,6 @@ public abstract class Component implements IComponent {
         }
     }
 
-
     @Override
     public String toString() {
         return "Is damaged: "+this.isDamaged()+". Is critical: "+this.isCritical()+".\n";

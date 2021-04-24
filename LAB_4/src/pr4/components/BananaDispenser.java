@@ -20,7 +20,7 @@ public class BananaDispenser extends Component {
     }
 
     public int costRepair() {
-        return 3;
+        return 4;
     }
 
     public boolean isCritical() {
