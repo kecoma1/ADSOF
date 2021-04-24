@@ -1,13 +1,11 @@
 package pr4.races;
 
-import pr4.components.Component;
 import pr4.powerups.*;
 import pr4.vehicles.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
 /**
