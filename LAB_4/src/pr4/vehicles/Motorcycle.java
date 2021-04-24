@@ -19,11 +19,13 @@ public class Motorcycle extends Vehicle {
         super(maxSpeed, position);
     }
 
-    @Override public double getRealSpeed() {
+    @Override 
+    public double getRealSpeed() {
         return this.getMaxSpeed();
     }
 
-    @Override public String toString() {
+    @Override 
+    public String toString() {
         return this.getName()+super.toString();
     }
 

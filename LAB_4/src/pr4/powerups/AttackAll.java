@@ -5,6 +5,10 @@ import java.util.List;
 import pr4.vehicles.IVehicle;
 import pr4.vehicles.Vehicle;
 
+/**
+ * Class that defines the Attack all power up.
+ * @author Kevin de la Coba and Marcos Aarón Bernuy.
+ */
 public class AttackAll implements IPowerUp {
 
     public void applyPowerUp(IVehicle v){

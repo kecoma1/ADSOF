@@ -19,10 +19,18 @@ public abstract class Component implements IComponent {
         this.vehicle = vehicle;
     }
 
+    /**
+     * Method to reset the number of turns left until a piece is repaired
+     */
     public void resetTurnsForRepairing() {
         this.turnsLeftForRepairing = this.costRepair();
     } 
 
+    /**
+     * Method to get a string with the turns left and 
+     * the total turns until a component is repaired.
+     * @return "turns_passed / total turns"
+     */
     public String getTurnsForRepairing(){
         return this.costRepair()-this.turnsLeftForRepairing+"/"+this.costRepair();
     }
@@ -30,8 +38,7 @@ public abstract class Component implements IComponent {
     public boolean isDamaged() {
         return damaged;
     }
-
-    
+ 
     public void setDamaged(boolean damage) {
         this.damaged = damage;
         if (this.isCritical()) this.vehicle.setCanMove(!damage);

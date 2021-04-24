@@ -2,7 +2,7 @@ package pr4.exceptions;
 
 /**
  * Class to define a invalid component exception.
- * @author Kevin de la Coba and Marcos Bernuy.
+ * @author Kevin de la Coba and Marcos Aarón Bernuy.
  */
 public class InvalidComponentException extends Exception {
     
@@ -17,6 +17,10 @@ public class InvalidComponentException extends Exception {
         this.error = errMsg;
     }
 
+    /**
+     * Method to get the error message of the exception.
+     * @return Error message of the exception.
+     */
     public String getError() {
         return this.error;
     }

@@ -63,13 +63,15 @@ public class RaceReader {
                     i++;
                     if (i <= 3) continue;
 
+                    // Checking which components have the car
                     if (s.equals("BananaDispenser")) bananaDispenser = true;
                     else if (s.equals("Engine")) engine = true;
                     else if (s.equals("Window")) window = true;
                     else if (s.equals("Wheels")) wheels = true;
                 }
 
-                while(j<quantity){
+                // Creating the requested vehicles
+                while(j<quantity) {
                     Car c = new Car(maxSpeed, 0.0);
                     
                     // Adding components
@@ -108,12 +110,14 @@ public class RaceReader {
                     i++;
                     if (i <= 3) continue;
 
+                    // Checking which components have the car
                     if (s.equals("BananaDispenser")) bananaDispenser = true;
                     else if (s.equals("Engine")) engine = true;
                     else if (s.equals("Window")) window = true;
                     else if (s.equals("Wheels")) wheels = true;
                 }
 
+                // Creating the requested vehicles
                 while(j<quantity){
                     Truck t = new Truck(maxSpeed, 0.0);
                     
@@ -153,12 +157,14 @@ public class RaceReader {
                     i++;
                     if (i <= 3) continue;
 
+                    // Checking which components have the car
                     if (s.equals("BananaDispenser")) bananaDispenser = true;
                     else if (s.equals("Engine")) engine = true;
                     else if (s.equals("Window")) window = true;
                     else if (s.equals("Wheels")) wheels = true;
                 }
 
+                // Creating the requested vehicles
                 while(j<quantity){
                     Motorcycle m = new Motorcycle(maxSpeed, 0.0);
                     

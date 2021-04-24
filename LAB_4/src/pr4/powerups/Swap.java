@@ -1,16 +1,21 @@
 package pr4.powerups;
 
+import pr4.races.Race;
 import pr4.vehicles.*;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+/**
+ * Class that defines the swap power upp.
+ * @author Kevin de la Coba and Marcos Aarón Bernuy.
+ */
 public class Swap implements IPowerUp{
 
     public void applyPowerUp(IVehicle v){
         Vehicle vehicle = (Vehicle) v;
-        DecimalFormat df = vehicle.getRace().getDecimalFormat();
+        DecimalFormat df = Race.getDecimalFormat();
         Vehicle opponent = vehicle.getRace().getClosestOpponentTo(vehicle);
+        
         if (opponent == null) return;
 
         Double pos = opponent.getActualPosition();

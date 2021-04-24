@@ -21,13 +21,15 @@ public class Truck extends Vehicle {
         super(maxSpeed, position);
     }
 
-    @Override public double getRealSpeed() {
+    @Override 
+    public double getRealSpeed() {
         double random = 1 + (int)(Math.random() * ((10 - 1) + 1));
         if (random == 1.0) return this.getMaxSpeed()*0.8; // 1 out 10 (90% probability) 
         else return this.getMaxSpeed();
     }
 
-    @Override public String toString() {
+    @Override 
+    public String toString() {
         return this.getName()+super.toString();
     }
 

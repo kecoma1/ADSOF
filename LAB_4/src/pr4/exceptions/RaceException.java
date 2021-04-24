@@ -2,7 +2,7 @@ package pr4.exceptions;
 
 /**
  * Class to define a race exception
- * @author Kevin de la Coba and Marcos Bernuy.
+ * @author Kevin de la Coba and Marcos Aarón Bernuy.
  */
 public class RaceException extends Exception {
     

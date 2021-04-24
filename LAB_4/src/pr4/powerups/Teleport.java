@@ -1,15 +1,18 @@
 package pr4.powerups;
 
+import pr4.races.Race;
 import pr4.vehicles.*;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 
+/**
+ * Class that defines the teleport power up.
+ * @author Kevin de la Coba and Marcos Aarón Bernuy.
+ */
 public class Teleport implements IPowerUp{
 
     public void applyPowerUp(IVehicle v){
-        Vehicle vehicle = (Vehicle) v;
-        DecimalFormat df = vehicle.getRace().getDecimalFormat();
+        DecimalFormat df = Race.getDecimalFormat();
 
         // Doubles the speed for one turn
         double vehiclePos = v.getActualPosition();

@@ -9,7 +9,7 @@ public interface IPowerUp{
 
     /**
      * Method to apply a PowerUp to a vehicle
-     * @param IVehicle which will receive the PowerUp.
+     * @param v which will receive the PowerUp.
      */
     public void applyPowerUp(IVehicle v);
 

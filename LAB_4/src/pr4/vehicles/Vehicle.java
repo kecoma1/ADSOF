@@ -60,16 +60,27 @@ public abstract class Vehicle implements IVehicle {
      */
     public abstract double getRealSpeed();
 
+    /**
+     * Method to attack an specific vehicle.
+     * It chooses a random element of the other vehicle.
+     * @param attacked Vehicle to attack.
+     */
     public void attack(Vehicle attacked) {
         List<IComponent> enemyComponents = attacked.getComponents();
         double random = 1 + (int)(Math.random() * ((enemyComponents.size() - 1) + 1));
 
+        // Choosing a random component of the vehicle
         Component c = (Component)enemyComponents.get((int)(random-1));
+
         c.setDamaged(true);
         c.resetTurnsForRepairing();
         System.out.println(this.getName()+" attacks "+attacked.getName()+" "+c.getName());
     }
 
+    /**
+     * Method to check if the vehicle can attack.
+     * @return Boolean value, true if it can, false if not.
+     */
     public boolean canAttack() {
         for (IComponent c: this.components)
             if (c instanceof BananaDispenser) {
@@ -79,6 +90,9 @@ public abstract class Vehicle implements IVehicle {
         return false;
     }
 
+    /**
+     * Method to repair all the damaged components of the vehicle.
+     */
     public void repair() {
         for (IComponent c: this.components) {
             if (c.isDamaged()) {
@@ -89,9 +103,10 @@ public abstract class Vehicle implements IVehicle {
         }
     }
 
-    @Override public String toString() {
+    @Override 
+    public String toString() {
         String s = new String();
-        DecimalFormat df = this.race.getDecimalFormat();
+        DecimalFormat df = Race.getDecimalFormat();
 
         for (IComponent c: this.getComponents()) {
             s += c.toString();
@@ -100,7 +115,8 @@ public abstract class Vehicle implements IVehicle {
         return ". Speed "+df.format(this.maxSpeed)+". Actual position: "+df.format(this.position)+"\n"+s;
     }
 
-    @Override public boolean equals(Object v) {
+    @Override 
+    public boolean equals(Object v) {
         if (v==this) return true;
         if (!(v instanceof Vehicle)) return false;
 

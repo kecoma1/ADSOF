@@ -12,17 +12,16 @@ import java.text.DecimalFormat;
 
 /**
  * Class that implements a race.
- * @author Kevin de la Coba and Marcos Bernuy.
+ * @author Kevin de la Coba and Marcos Aarón Bernuy.
  */
 public class Race {
     private double length;
-    private List<Vehicle> participants;
-    private List<IPowerUp> powerUps = new ArrayList<>();
     private boolean allowAttacks = false;
     private boolean allowPowerUps = false;
+    private List<Vehicle> participants;
+    private List<IPowerUp> powerUps = new ArrayList<>();
     private static DecimalFormat df = new DecimalFormat("0.0");
 
-    
     /**
      * Constructor of the object Race
      * @param length length of the Race
@@ -42,18 +41,34 @@ public class Race {
             v.setRace(this);
     }
 
+    /**
+     * Method to get the decimal format used in the race.
+     * @return Decimal format used in the race
+     */
     public static DecimalFormat getDecimalFormat() {
         return df;
     }
 
+    /**
+     * Method to set if a race can have a attacks or not.
+     * @param b Boolean value to set it.
+     */
     public void allowAttacks(boolean b) {
         this.allowAttacks = b;
     }
 
+    /**
+     * Method to set if the race can have power ups or not.
+     * @param b Boolean value to set it.
+     */
     public void allowPowerUps(boolean b) {
         this.allowPowerUps = b;
     }
 
+    /**
+     * Method to get the participants of the race.
+     * @return List of the participants of the race.
+     */
     public List<Vehicle> getParticipants() {
         return this.participants;
     }
@@ -65,6 +80,7 @@ public class Race {
         boolean end = false;
         int i = 1;
         
+        // Iterating over the turns
         for(i = 1; !end; i++) {
             System.out.println("--------\n");
             System.out.println("Staring Turn: "+i+"\n");
@@ -79,6 +95,9 @@ public class Race {
                     
                     // Vehicles attacking
                     for (Vehicle v: this.participants) {
+
+                        // If the vehicle doesn't have a banana dispenser
+                        // or its damaged it cannot attack.
                         if (v.canAttack()) {
                             Vehicle attacked = this.getClosestOpponentTo(v);
                             double random = 1 + (int)(Math.random() * ((2 - 1) + 1)); // 50% probability of generating a 1
@@ -121,6 +140,7 @@ public class Race {
             System.out.println("Ending Turn: "+i+"\n");
             System.out.println("--------\n");
             
+            // Updating the position of the participants
             for(Vehicle v: participants) {
 
                 if (v.canMove()) v.setActualPosition(v.getActualPosition()+v.getRealSpeed());
@@ -134,10 +154,17 @@ public class Race {
         
     }
 
+    /**
+     * Method to get the closest opponent to a specific vehicle.
+     * @param v Vehicle to check.
+     * @return Closest vehicle to v.
+     */
     public Vehicle getClosestOpponentTo(Vehicle v) {
         Vehicle closest = null;
         double minDistance = this.length;
         double distance = 0.0;
+
+        // Checking all the participants
         for (Vehicle o: this.participants) {
             distance = v.getDistanceBetween(o);
             if (!o.equals(v) && minDistance > distance) { // Getting the closest vehicle
@@ -151,7 +178,8 @@ public class Race {
         return closest;
     }
 
-    @Override public String toString() {
+    @Override 
+    public String toString() {
         String str = new String();
 
         str = "Race with maximum length: "+this.length+"\n";

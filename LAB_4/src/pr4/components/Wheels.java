@@ -3,6 +3,7 @@ package pr4.components;
 import pr4.vehicles.IVehicle;
 
 /**
+ * Class that defines the wheels component.
  * @author Kevin de la Coba Malam and Marcos Aarón Bernuy.
  */
 public class Wheels extends Component { 

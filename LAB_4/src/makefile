@@ -1,4 +1,4 @@
-all: compile test1 test2 test3 test4 clean #doc
+all: compile test1 test2 test3 test4 clean doc
 
 compile:
 	@echo "#-----------------------"
@@ -15,7 +15,7 @@ clean:
 	rm -f pr4/races/*.class
 	rm -f pr4/vehicles/*.class
 	rm -f pr4/tests/*.class
-	rm -r -f doc
+	rm -r -f ../doc
 
 test1:
 	@echo "#-----------------------"

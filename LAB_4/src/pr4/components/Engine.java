@@ -2,6 +2,10 @@ package pr4.components;
 
 import pr4.vehicles.IVehicle;
 
+/**
+ * Class that defines the engine component.
+ * @author Kevin de la Coba Malam and Marcos Aarón Bernuy.
+ */
 public class Engine extends Component{
     /**
      * Constructor for the engine.
