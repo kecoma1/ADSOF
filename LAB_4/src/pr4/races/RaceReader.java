@@ -80,7 +80,7 @@ public class RaceReader {
                         if (window) c.addComponent(new Window(c));
                         if (wheels) c.addComponent(new Wheels(c));
                     } catch(InvalidComponentException e) {
-                        System.out.print(e);
+                        System.out.println(e.getError());
                     }
                     
                     vehicles.add(c);
@@ -110,7 +110,7 @@ public class RaceReader {
                         if (window) t.addComponent(new Window(t));
                         if (wheels) t.addComponent(new Wheels(t));
                     } catch(InvalidComponentException e) {
-                        System.out.print(e);
+                        System.out.println(e.getError());
                     }
 
                     vehicles.add(t);
@@ -140,7 +140,7 @@ public class RaceReader {
                         if (window) m.addComponent(new Window(m));
                         if (wheels) m.addComponent(new Wheels(m));
                     } catch(InvalidComponentException e) {
-                        System.out.print(e);
+                        System.out.println(e.getError());
                     }
 
                     vehicles.add(m);

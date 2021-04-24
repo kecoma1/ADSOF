@@ -2,7 +2,7 @@ package pr4.vehicles;
 
 import java.util.List;
 import pr4.exceptions.InvalidComponentException;
-import pr4.components.IComponent;
+import pr4.components.*;
 
 
 /**

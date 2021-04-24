@@ -16,7 +16,7 @@ public class Engine extends Component{
     }
 
     public String getName() {
-        return "Engine. ";
+        return "Engine";
     }
 
     public int costRepair() {
@@ -40,6 +40,6 @@ public class Engine extends Component{
 
     @Override
     public String toString(){
-        return "->"+this.getName()+super.toString();
+        return "->"+this.getName()+". "+super.toString();
     }
 }
