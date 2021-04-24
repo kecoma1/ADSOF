@@ -1,6 +1,6 @@
 package pr4.races;
 
-import pr4.powerups.*;
+import pr4.powerUps.*;
 import pr4.vehicles.Vehicle;
 
 import java.util.ArrayList;

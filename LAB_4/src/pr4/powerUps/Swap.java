@@ -1,4 +1,4 @@
-package pr4.powerups;
+package pr4.powerUps;
 
 import pr4.races.Race;
 import pr4.vehicles.*;
@@ -15,7 +15,7 @@ public class Swap implements IPowerUp{
         Vehicle vehicle = (Vehicle) v;
         DecimalFormat df = Race.getDecimalFormat();
         Vehicle opponent = vehicle.getRace().getClosestOpponentTo(vehicle);
-        
+
         if (opponent == null) return;
 
         Double pos = opponent.getActualPosition();

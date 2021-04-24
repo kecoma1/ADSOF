@@ -5,12 +5,12 @@ compile:
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java pr4/powerups/*.java
+	javac pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java pr4/powerUps/*.java
 	@echo "\n"
 
 clean:
 	rm -f pr4/exceptions/*.class
-	rm -f pr4/powerups/*.class
+	rm -f pr4/powerUps/*.class
 	rm -f pr4/components/*.class
 	rm -f pr4/races/*.class
 	rm -f pr4/vehicles/*.class
@@ -54,5 +54,5 @@ doc:
 	@echo "Generating doc . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javadoc -d ../doc -author pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java pr4/powerups/*.java
+	javadoc -d ../doc -author pr4/vehicles/*.java pr4/exceptions/*.java pr4/races/*.java pr4/tests/*.java pr4/components/*.java pr4/powerUps/*.java
 	@echo "\n"

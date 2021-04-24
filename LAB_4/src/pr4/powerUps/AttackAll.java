@@ -1,4 +1,4 @@
-package pr4.powerups;
+package pr4.powerUps;
 
 import java.util.List;
 
