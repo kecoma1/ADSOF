@@ -28,11 +28,12 @@ public class Form {
     /**
      * Method to execute all the fields.
      */
-    public Map<String, ?> exec() {
+    public Map<String, String> exec() {
         Scanner myObj;
         String input;
-        Map<String, ?> returnMap = new LinkedHashMap<>();
+        Map<String, String> returnMap = new LinkedHashMap<>();
         for (String key : this.fields.keySet()) {
+            Field<?> f = this.fields.get(key);
             
             do {
                 // Printing the message
@@ -43,10 +44,9 @@ public class Form {
     
                 input = myObj.nextLine();
 
-            } while (!this.fields.get(key).validate(input));
+            } while (!f.validate(input));
 
-            Field<?> f = this.fields.get(key);
-            returnMap.put(key, f.getInputTransformer().apply(input));
+            returnMap.put(key, f.getInputTransformer().apply(input).toString());
         }
 
         return returnMap;
