@@ -39,4 +39,34 @@ public class Field <T> {
         this.validations.put(p, s);
         return this;
     }
+
+    /**
+     * Method to validate an string.
+     * @param input Input received in the "terminal".
+     */
+    public boolean validate(String input) {
+        // Transforming the input
+        T transformed = this.inputTransformer.apply(input);
+        
+        for (Predicate<T> key : this.validations.keySet()) {
+            if (!key.test(transformed)) {
+                System.out.println("Invalid value: "+input);
+                
+                // Printing asociated error message
+                System.out.println(this.validations.get(key));
+
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Method to get the input transformer of the class.
+     * @return Input transformer of the class.
+     */
+    public Function<String, T> getInputTransformer() {
+        return this.inputTransformer;
+    }
+
 }
