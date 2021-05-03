@@ -1,9 +1,13 @@
 package processingdata;
 
 import java.util.Map;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.io.*;
+import java.lang.*;
+import java.util.*;
 
 
 /**
@@ -11,14 +15,20 @@ import java.util.ArrayList;
  */
 public class DataAggregator {
 
-    private Map<String, List<? super Comparable>> data = new HashMap<>();
+    private Map<String, List<? super Object>> data = new LinkedHashMap<>();
 
-    public DataAggregator add(Map<String, ? super Comparable> m){
+    public DataAggregator add(Map<String, ?> m){
         for (String key : m.keySet()) {
             // if the key is in the dict, the list is created.
             if (!this.data.containsKey(key)) this.data.put(key, new ArrayList<>());
             this.data.get(key).add(m.get(key));
-            this.data.get(key).sort();
+            Collections.sort(this.data.get(key), new ObjectComparator());
         }
+        return this;
     }
+
+    public String toString() {
+        return this.data.toString();
+    }
+
 }

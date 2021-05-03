@@ -40,13 +40,13 @@ public class ProcessingMain {
             addValidation(s->s>0, "value greater than 0 expected");
             
         censusForm.add("Enter address and postal code separated by ';'", adr).
-            add("Number of people livingin that address?", np);
+            add("Number of people living in that address?", np);
             
         DataAggregator dag= new DataAggregator();
         
         for(int i=0; i<3; i++)
             dag.add(censusForm.exec());
-        
+
         System.out.println(dag);        
     }
 }

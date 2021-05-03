@@ -5,7 +5,7 @@ compile:
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac forms/*.java processingdata/*.java #-Xdiags:verbose
+	javac -Xdiags:verbose forms/*.java processingdata/*.java #processingdata/DataAggregator.java processingdata/ProcessingMain.java
 	@echo "\n"
 
 clean:
@@ -25,7 +25,7 @@ test2:
 	@echo "Executing Test 2 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr4.tests.MainEx2 
+	@java processingdata.ProcessingMain 
 	@echo "\n"
 
 test3:
