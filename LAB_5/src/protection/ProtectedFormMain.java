@@ -1,11 +1,16 @@
+package protection;
+
+import forms.*;
+import processingdata.*;
+
 public class ProtectedFormMain {
     public static void main(String[] args) throws IOException {
         Form enrollForm= newForm();
-        Field<Integer> age= new Field<Integer>(s-> Integer.valueOf(s)).
+        Field<Integer> age = new Field<Integer>(s-> Integer.valueOf(s)).
                                 addValidation(a-> a> 18, "value should be bigger than 18").
-                                addValidation(a-> a< 66, "value should be less than 66");ç
+                                addValidation(a-> a< 66, "value should be less than 66");
         
-        Field<Boolean> yesNo= newField<>(s-> s.toUpperCase().equals("YES"));
+        Field<Boolean> yesNo = new Field<>(s -> s.toUpperCase().equals("YES"));
         enrollForm.add("What is your age?", age).
                     add("Are you married?", yesNo);
                     

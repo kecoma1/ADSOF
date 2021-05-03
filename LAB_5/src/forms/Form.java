@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Class that defines a form. It contains a map of fields.
  * @author Kevin de la Coba and Marcos Aarón Bernuy.
  */
-public class Form {
+public class Form extends AbstractForm{
     
     private Map<String, Field<?>> fields = new LinkedHashMap<>();
 

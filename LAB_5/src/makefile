@@ -1,15 +1,15 @@
-all: compile test2 clean #doc
+all: compile test3 clean #doc
 
 compile:
 	@echo "#-----------------------"
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac -Xdiags:verbose forms/*.java processingdata/*.java #processingdata/DataAggregator.java processingdata/ProcessingMain.java
+	javac -Xdiags:verbose forms/*.java processingdata/*.java protected/*.java
 	@echo "\n"
 
 clean:
-	rm -f forms/*.class processingdata/*.class
+	rm -f forms/*.class processingdata/*.class protected/*.class
 	rm -r -f ../doc
 
 test1:
@@ -33,7 +33,7 @@ test3:
 	@echo "Executing Test 3 . . ."
 	@echo "#-----------------------"
 	@echo ""
-	@java pr4.tests.MainEx3 
+	@java protected.ProtectedFormMain
 	@echo "\n"
 
 doc:
