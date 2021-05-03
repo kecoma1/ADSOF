@@ -28,10 +28,10 @@ public class Form {
     /**
      * Method to execute all the fields.
      */
-    public Map<String, String> exec() {
+    public Map<String, ? super Comparable> exec() {
         Scanner myObj;
         String input;
-        Map<String, String> returnMap = new LinkedHashMap<>();
+        Map<String, ? super Comparable> returnMap = new LinkedHashMap<>();
         for (String key : this.fields.keySet()) {
             Field<?> f = this.fields.get(key);
             
@@ -46,7 +46,7 @@ public class Form {
 
             } while (!f.validate(input));
 
-            returnMap.put(key, f.getInputTransformer().apply(input).toString());
+            returnMap.put(key, f.getInputTransformer().apply(input));
         }
 
         return returnMap;

@@ -14,7 +14,7 @@ import java.util.function.Predicate;
  * message if the condition of the validator is not accomplished.
  * @author Kevin de la Coba and Marcos Aarón Bernuy.
  */
-public class Field <T> {
+public class Field <T extends Comparable<T>> {
 
     private Function<String, T> inputTransformer;
     private Map<Predicate<T>, String> validations;
@@ -68,5 +68,4 @@ public class Field <T> {
     public Function<String, T> getInputTransformer() {
         return this.inputTransformer;
     }
-
 }

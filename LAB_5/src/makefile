@@ -5,11 +5,11 @@ compile:
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac forms/*.java
+	javac -Xdiags:verbose forms/*.java #processingData/*.java
 	@echo "\n"
 
 clean:
-	rm -f forms/*.class
+	rm -f forms/*.class #processingData/*.class
 	rm -r -f ../doc
 
 test1:
