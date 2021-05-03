@@ -1,15 +1,15 @@
-all: compile test1 clean #doc
+all: compile test2 clean #doc
 
 compile:
 	@echo "#-----------------------"
 	@echo "Compiling . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javac -Xdiags:verbose forms/*.java #processingData/*.java
+	javac forms/*.java processingdata/*.java #-Xdiags:verbose
 	@echo "\n"
 
 clean:
-	rm -f forms/*.class #processingData/*.class
+	rm -f forms/*.class processingdata/*.class
 	rm -r -f ../doc
 
 test1:
