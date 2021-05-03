@@ -2,10 +2,11 @@ package protection;
 
 import forms.*;
 import processingdata.*;
+import java.io.IOException;
 
 public class ProtectedFormMain {
     public static void main(String[] args) throws IOException {
-        Form enrollForm= newForm();
+        Form enrollForm= new Form();
         Field<Integer> age = new Field<Integer>(s-> Integer.valueOf(s)).
                                 addValidation(a-> a> 18, "value should be bigger than 18").
                                 addValidation(a-> a< 66, "value should be less than 66");

@@ -1,36 +1,44 @@
 package forms;
 
+import java.io.IOException;
+import java.util.Scanner; 
+import java.util.Map; 
+
 public class ProtectedForm extends AbstractForm{
 
     private static Form form;
     private static String password;
+    private static int counter = 3;
+    private static boolean proved = false;
 
-    public static void protect(Form form, String password){ 
-        this.form = form;
-        this.password = password;
+    public static ProtectedForm protect(Form form, String password){ 
+        ProtectedForm.form = form;
+        ProtectedForm.password = password;
+        return new ProtectedForm();
     }
 
-    public abstract Map<String, ? super Comparable> exec(){
+    public Map<String, ? super Comparable> exec(){
         Scanner myObj;
         String input;
-        int counter = 2;
 
-        do {
-                // Printing the message
-                System.out.print(key+" Enter password: ");
+        while (ProtectedForm.counter > 0 && !ProtectedForm.proved) {
+            // Printing the message
+            System.out.print("Enter password: ");
 
-                // Taking the input
-                myObj = new Scanner(System.in);
-    
-                input = myObj.nextLine();
+            // Taking the input
+            myObj = new Scanner(System.in);
+            input = myObj.nextLine();
 
-                if(!input.equals(password)){
-                    System.out.println("Invalid password ("+counter+" remaining attempts)");
-                    counter--;
-                } else {
-                    form.exec();
-                }
+            if(!input.equals(ProtectedForm.password)){
+                ProtectedForm.counter--;
+                System.out.println("Invalid password ("+ProtectedForm.counter+" remaining attempts)");
+            } else {
+                ProtectedForm.proved = true;
+                return ProtectedForm.form.exec();
+            }
+        }
 
-            } while (!input.equals(password) || counter <= 0);
+        if (!ProtectedForm.proved) return null;
+        else return ProtectedForm.form.exec();
     }
 }
