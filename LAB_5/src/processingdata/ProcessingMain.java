@@ -3,6 +3,10 @@ package processingdata;
 import forms.*;
 import java.io.IOException;
 
+/**
+ * Class that defines a comparable address.
+ * @author Kevin de la Coba Malam and Marcos Bernuy
+ */
 class Address implements Comparable<Address>{
     private String address;
     private int postalCode;
