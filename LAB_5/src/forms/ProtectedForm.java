@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.Scanner; 
 import java.util.Map; 
 
+/**
+ * Class that uses the proxy design pattern (this class is the proxy)
+ * to protect a form.
+ * @author Kevin de la Coba Malam and Marcos Bernuy
+ */
 public class ProtectedForm extends AbstractForm{
 
     private static Form form;
@@ -11,6 +16,12 @@ public class ProtectedForm extends AbstractForm{
     private static int counter = 3;
     private static boolean proved = false;
 
+    /**
+     * Method to protect a form.
+     * @param form Form to protect.
+     * @param password Password of the form.
+     * @return Instance of a protected form.
+     */
     public static ProtectedForm protect(Form form, String password){ 
         ProtectedForm.form = form;
         ProtectedForm.password = password;

@@ -1,4 +1,4 @@
-all: compile test1 test2 test3 clean #doc
+all: compile clean doc #test1 test2 test3 clean #doc
 
 compile:
 	@echo "#-----------------------"
@@ -41,5 +41,5 @@ doc:
 	@echo "Generating doc . . ."
 	@echo "#-----------------------"
 	@echo ""
-	javadoc -d ../doc 
+	javadoc -d ../doc -author forms/*.java processingdata/*.java protection/*.java
 	@echo "\n"

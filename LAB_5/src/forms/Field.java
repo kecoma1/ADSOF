@@ -43,6 +43,7 @@ public class Field <T extends Comparable<T>> {
     /**
      * Method to validate an string.
      * @param input Input received in the "terminal".
+     * @return True if the validation is successful, false if not
      */
     public boolean validate(String input) {
         // Transforming the input

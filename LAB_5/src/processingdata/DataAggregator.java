@@ -11,12 +11,18 @@ import java.util.*;
 
 
 /**
- * Class that defines a Data agregator.author Kevin de la Coba and Marcos Aarón Bernuy.
+ * Class that defines a Data agregator.
+ * @author Kevin de la Coba Malam and Marcos Bernuy
  */
 public class DataAggregator {
 
     private Map<String, List<? super Object>> data = new LinkedHashMap<>();
 
+    /**
+     * Method to add data.
+     * @param m Map to be added.
+     * @return Object with all the data.
+     */
     public DataAggregator add(Map<String, ?> m){
         for (String key : m.keySet()) {
             // if the key is in the dict, the list is created.
@@ -27,6 +33,7 @@ public class DataAggregator {
         return this;
     }
 
+    @Override
     public String toString() {
         return this.data.toString();
     }

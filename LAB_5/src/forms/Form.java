@@ -10,30 +10,25 @@ import java.util.Scanner;
  */
 public class Form extends AbstractForm{
     
-    private Map<String, Field<?>> fields = new LinkedHashMap<>();
 
     /**
      * Method to add a field to the form.
-     * @param <T> Type of the returning value of the form.
      * @param s String message shown when there's an error.
      * @param f Field.
      * @return This object.
      */
     public Form add(String s, Field<?> f) {
-        if (this.fields.keySet().contains(s)) return this;
-        this.fields.put(s, f);
+        if (this.getFields().keySet().contains(s)) return this;
+        this.getFields().put(s, f);
         return this;
     }
 
-    /**
-     * Method to execute all the fields.
-     */
     public Map<String, ? super Comparable> exec() {
         Scanner myObj;
         String input;
         Map<String, ? super Comparable> returnMap = new LinkedHashMap<>();
-        for (String key : this.fields.keySet()) {
-            Field<?> f = this.fields.get(key);
+        for (String key : this.getFields().keySet()) {
+            Field<?> f = this.getFields().get(key);
             
             do {
                 // Printing the message
